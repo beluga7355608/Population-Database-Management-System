@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>家庭户口立户 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<!-- Sidebar -->
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-semibold text-gray-800">户口业务 / 家庭户口立户</h2>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-sm text-gray-500" id="current-time">2026-06-11 08:30:00</span>
+<div class="flex items-center gap-2 border-l pl-6">
+<span class="text-sm font-medium text-gray-800">管理员</span>
+<img alt="Avatar" class="w-8 h-8 rounded-full" src="https://modao.cc/agent-py/media/generated_images/2026-06-11/bd6aa965c8494f7795ab50fee50db29e.jpg"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-4 flex-1 min-w-[300px]">
+<div class="relative flex-1 max-w-xs">
+<iconify-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" icon="mdi:magnify"></iconify-icon>
+<input class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="按户主姓名/身份证号搜索" type="text"/>
+</div>
+<select class="border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+<option>全部状态</option>
+<option>待审核</option>
+<option>已通过</option>
+<option>已驳回</option>
+</select>
+<button class="bg-blue-800 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-900 transition-colors">查询</button>
+</div>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-blue-700 transition-colors" onclick="openModal('addModal')">
+<iconify-icon icon="mdi:plus"></iconify-icon>
+                        新增立户申请
+                    </button>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+<tr>
+<th class="px-6 py-4 font-medium">户号</th>
+<th class="px-6 py-4 font-medium">户主姓名</th>
+<th class="px-6 py-4 font-medium">身份证号</th>
+<th class="px-6 py-4 font-medium">户籍地址</th>
+<th class="px-6 py-4 font-medium">成员数</th>
+<th class="px-6 py-4 font-medium">申请日期</th>
+<th class="px-6 py-4 font-medium">状态</th>
+<th class="px-6 py-4 font-medium">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 text-sm">
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 font-mono text-blue-600">H2026060101</td>
+<td class="px-6 py-4 font-medium">张建国</td>
+<td class="px-6 py-4">110105197508123344</td>
+<td class="px-6 py-4 truncate max-w-xs">北京市朝阳区建国门外大街1号院</td>
+<td class="px-6 py-4 text-center">3</td>
+<td class="px-6 py-4 text-gray-500">2026-06-10</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs">待审核</span></td>
+<td class="px-6 py-4">
+<div class="flex gap-3">
+<button class="text-blue-600 hover:underline" onclick="openModal('auditModal')">审核</button>
+<button class="text-gray-400 hover:text-gray-600"><iconify-icon icon="mdi:eye"></iconify-icon></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 font-mono text-blue-600">H2026060102</td>
+<td class="px-6 py-4 font-medium">李秀英</td>
+<td class="px-6 py-4">310115198210056677</td>
+<td class="px-6 py-4 truncate max-w-xs">上海市浦东新区张江路88号</td>
+<td class="px-6 py-4 text-center">2</td>
+<td class="px-6 py-4 text-gray-500">2026-06-08</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">已通过</span></td>
+<td class="px-6 py-4">
+<div class="flex gap-3">
+<button class="text-gray-400 cursor-not-allowed">已审</button>
+<button class="text-gray-400 hover:text-gray-600"><iconify-icon icon="mdi:printer"></iconify-icon></button>
+</div>
+</td>
+</tr>
+<!-- More rows... -->
+</tbody>
+</table>
+<div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+<span>显示 1 到 2 条，共 18 条记录</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-gray-300 rounded hover:bg-white disabled:opacity-50" disabled="">上一页</button>
+<button class="px-3 py-1 bg-blue-600 text-white rounded">1</button>
+<button class="px-3 py-1 border border-gray-300 rounded hover:bg-white">2</button>
+<button class="px-3 py-1 border border-gray-300 rounded hover:bg-white">3</button>
+<button class="px-3 py-1 border border-gray-300 rounded hover:bg-white">下一页</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Modals -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="addModal">
+<div class="bg-white rounded-lg w-[600px] shadow-xl overflow-hidden">
+<div class="px-6 py-4 bg-gray-50 border-b flex items-center justify-between">
+<h3 class="font-bold text-gray-800">新增立户申请</h3>
+<button class="text-gray-400 hover:text-gray-600 text-xl" onclick="closeModal('addModal')"><iconify-icon icon="mdi:close"></iconify-icon></button>
+</div>
+<form class="p-6 grid grid-cols-2 gap-4">
+<div class="col-span-1">
+<label class="block text-xs font-medium text-gray-500 mb-1">户主姓名 <span class="text-red-500">*</span></label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-medium text-gray-500 mb-1">身份证号 <span class="text-red-500">*</span></label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="block text-xs font-medium text-gray-500 mb-1">户籍地址 <span class="text-red-500">*</span></label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-medium text-gray-500 mb-1">成员人数</label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="number"/>
+</div>
+<div class="col-span-1">
+<label class="block text-xs font-medium text-gray-500 mb-1">联系电话</label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
+</div>
+<div class="col-span-2 mt-4 flex justify-end gap-3">
+<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded text-sm" onclick="closeModal('addModal')" type="button">取消</button>
+<button class="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700" type="submit">提交申请</button>
+</div>
+</form>
+</div>
+</div>
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="auditModal">
+<div class="bg-white rounded-lg w-96 shadow-xl overflow-hidden">
+<div class="px-6 py-4 bg-gray-50 border-b flex items-center justify-between">
+<h3 class="font-bold text-gray-800">业务审核</h3>
+<button class="text-gray-400 hover:text-gray-600 text-xl" onclick="closeModal('auditModal')"><iconify-icon icon="mdi:close"></iconify-icon></button>
+</div>
+<div class="p-6">
+<p class="text-sm text-gray-600 mb-4">确认对户主 <span class="font-bold">张建国</span> 的立户申请进行审核？</p>
+<label class="block text-xs font-medium text-gray-500 mb-1">审核意见</label>
+<textarea class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500 h-24 mb-6" placeholder="请输入审核意见..."></textarea>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded text-sm" onclick="closeModal('auditModal')">驳回</button>
+<button class="px-4 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700" onclick="closeModal('auditModal')">通过审核</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    </script>
+</body>
+</html>

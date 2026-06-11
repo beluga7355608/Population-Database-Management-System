@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>证件管理 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<h2 class="text-lg font-semibold text-gray-800">系统管理 / 证件管理</h2>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-xl text-white shadow-lg shadow-blue-100">
+<div class="flex justify-between items-start mb-4">
+<iconify-icon class="text-3xl opacity-50" icon="mdi:card-account-details"></iconify-icon>
+<span class="text-xs bg-white/20 px-2 py-0.5 rounded">身份证</span>
+</div>
+<p class="text-sm opacity-80">本月累计办证</p>
+<h3 class="text-3xl font-bold mt-1">1,245 <span class="text-sm font-normal opacity-60">张</span></h3>
+</div>
+<div class="bg-gradient-to-br from-purple-500 to-purple-700 p-6 rounded-xl text-white shadow-lg shadow-purple-100">
+<div class="flex justify-between items-start mb-4">
+<iconify-icon class="text-3xl opacity-50" icon="mdi:home-account"></iconify-icon>
+<span class="text-xs bg-white/20 px-2 py-0.5 rounded">户口本</span>
+</div>
+<p class="text-sm opacity-80">本月累计办证</p>
+<h3 class="text-3xl font-bold mt-1">456 <span class="text-sm font-normal opacity-60">本</span></h3>
+</div>
+<div class="bg-gradient-to-br from-orange-500 to-orange-700 p-6 rounded-xl text-white shadow-lg shadow-orange-100">
+<div class="flex justify-between items-start mb-4">
+<iconify-icon class="text-3xl opacity-50" icon="mdi:alert-decagram"></iconify-icon>
+<span class="text-xs bg-white/20 px-2 py-0.5 rounded">预警</span>
+</div>
+<p class="text-sm opacity-80">即将到期证件</p>
+<h3 class="text-3xl font-bold mt-1">82 <span class="text-sm font-normal opacity-60">件</span></h3>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8 flex flex-wrap items-center justify-between gap-4">
+<div class="flex gap-4">
+<input class="border rounded-md px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 w-64" placeholder="持有人姓名/证件编号" type="text"/>
+<select class="border rounded-md px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+<option>证件类型</option>
+<option>身份证</option>
+<option>户口本</option>
+<option>居住证</option>
+</select>
+<button class="bg-blue-800 text-white px-6 py-2 rounded-md text-sm hover:bg-blue-900 transition-colors">查询</button>
+</div>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-blue-700 transition-colors" onclick="openModal('addModal')">
+<iconify-icon icon="mdi:plus-circle"></iconify-icon>
+                    新建证件办理
+                </button>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden text-sm">
+<table class="w-full text-left">
+<thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+<tr>
+<th class="px-6 py-4 font-medium">证件编号</th>
+<th class="px-6 py-4 font-medium">持有人</th>
+<th class="px-6 py-4 font-medium">类型</th>
+<th class="px-6 py-4 font-medium">办理日期</th>
+<th class="px-6 py-4 font-medium">有效期至</th>
+<th class="px-6 py-4 font-medium">状态</th>
+<th class="px-6 py-4 font-medium">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 font-mono">ID110105199001012233</td>
+<td class="px-6 py-4 font-medium">张三</td>
+<td class="px-6 py-4">身份证</td>
+<td class="px-6 py-4 text-gray-500">2016-06-11</td>
+<td class="px-6 py-4 text-gray-500">2026-06-11</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-[10px] font-bold">即将到期</span></td>
+<td class="px-6 py-4">
+<div class="flex gap-2">
+<button class="text-blue-600 hover:underline">补办申请</button>
+<button class="text-gray-400 hover:text-gray-600">挂失</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 font-mono">HK20260601001</td>
+<td class="px-6 py-4 font-medium">李四</td>
+<td class="px-6 py-4">户口本</td>
+<td class="px-6 py-4 text-gray-500">2026-06-01</td>
+<td class="px-6 py-4 text-gray-500">长期</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold">正常</span></td>
+<td class="px-6 py-4">
+<button class="text-blue-600 hover:underline">详情</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 font-mono">JZ31011520260012</td>
+<td class="px-6 py-4 font-medium">王五</td>
+<td class="px-6 py-4">居住证</td>
+<td class="px-6 py-4 text-gray-500">2026-01-15</td>
+<td class="px-6 py-4 text-gray-500">2027-01-15</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-[10px] font-bold">补办中</span></td>
+<td class="px-6 py-4">
+<button class="text-gray-400 cursor-not-allowed">处理中</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Add Modal -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="addModal">
+<div class="bg-white rounded-lg w-[500px] shadow-xl overflow-hidden">
+<div class="px-6 py-4 bg-gray-50 border-b flex items-center justify-between">
+<h3 class="font-bold text-gray-800">新建证件办理业务</h3>
+<button class="text-gray-400 hover:text-gray-600 text-xl" onclick="closeModal('addModal')"><iconify-icon icon="mdi:close"></iconify-icon></button>
+</div>
+<form class="p-6 space-y-4">
+<div>
+<label class="block text-xs font-medium text-gray-500 mb-1">证件类型 <span class="text-red-500">*</span></label>
+<select class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500">
+<option>居民身份证 (初领)</option>
+<option>居民身份证 (换领/补领)</option>
+<option>居民户口簿 (申领/补领)</option>
+<option>居住证 (申领)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-500 mb-1">办理人姓名/身份证号 <span class="text-red-500">*</span></label>
+<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入姓名或身份证号搜索人口" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-gray-500 mb-1">工本费金额</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">¥</span>
+<input class="w-full pl-7 pr-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="number" value="20.00"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-500 mb-1">领取方式</label>
+<select class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500">
+<option>窗口自取</option>
+<option>邮政速递</option>
+</select>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-6">
+<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded text-sm" onclick="closeModal('addModal')" type="button">取消</button>
+<button class="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700" type="submit">确认办理</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    </script>
+</body>
+</html>

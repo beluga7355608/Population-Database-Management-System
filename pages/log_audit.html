@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>操作日志审计 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans text-sm">
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<h2 class="text-lg font-semibold text-gray-800">系统管理 / 日志审计</h2>
+<div class="flex items-center gap-2 text-orange-600 bg-orange-50 px-3 py-1 rounded text-xs">
+<iconify-icon icon="mdi:alert-box"></iconify-icon>
+                日志数据永久留存，严禁物理删除
+            </div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+<div class="flex flex-wrap gap-4 items-end">
+<div class="space-y-1">
+<label class="text-[10px] text-gray-400 uppercase font-bold">时间范围</label>
+<div class="flex items-center gap-2">
+<input class="border rounded px-3 py-1.5 outline-none focus:ring-1 focus:ring-blue-500" type="date"/>
+<span class="text-gray-300">-</span>
+<input class="border rounded px-3 py-1.5 outline-none focus:ring-1 focus:ring-blue-500" type="date"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] text-gray-400 uppercase font-bold">操作人</label>
+<input class="border rounded px-3 py-1.5 outline-none focus:ring-1 focus:ring-blue-500 w-32" placeholder="姓名/账号" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] text-gray-400 uppercase font-bold">操作类型</label>
+<select class="border rounded px-3 py-1.5 outline-none focus:ring-1 focus:ring-blue-500 w-32">
+<option>全部</option>
+<option>新增</option>
+<option>修改</option>
+<option>删除/注销</option>
+<option>审核</option>
+<option>导出</option>
+<option>登录</option>
+</select>
+</div>
+<button class="bg-blue-800 text-white px-6 py-2 rounded font-medium hover:bg-blue-900 transition-colors">执行查询</button>
+<button class="text-blue-600 hover:underline px-2 py-2">重置条件</button>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-gray-50 text-gray-400 text-[10px] uppercase font-bold">
+<tr>
+<th class="px-6 py-3">日志ID</th>
+<th class="px-6 py-3">操作时间</th>
+<th class="px-6 py-3">操作人</th>
+<th class="px-6 py-3">类型</th>
+<th class="px-6 py-3">模块</th>
+<th class="px-6 py-3">IP地址</th>
+<th class="px-6 py-3">内容描述</th>
+<th class="px-6 py-3">结果</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 text-[13px]">
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-mono text-gray-400">L882910</td>
+<td class="px-6 py-4 text-gray-600">2026-06-11 08:32:15</td>
+<td class="px-6 py-4 font-medium">admin</td>
+<td class="px-6 py-4"><span class="text-blue-600">登录</span></td>
+<td class="px-6 py-4 text-gray-500">登录模块</td>
+<td class="px-6 py-4 font-mono text-gray-400">192.168.1.105</td>
+<td class="px-6 py-4">系统管理员登录成功</td>
+<td class="px-6 py-4 text-green-600">成功</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-mono text-gray-400">L882909</td>
+<td class="px-6 py-4 text-gray-600">2026-06-11 08:35:44</td>
+<td class="px-6 py-4 font-medium">admin</td>
+<td class="px-6 py-4"><span class="text-green-600">新增</span></td>
+<td class="px-6 py-4 text-gray-500">常住人口</td>
+<td class="px-6 py-4 font-mono text-gray-400">192.168.1.105</td>
+<td class="px-6 py-4">新增常住人口登记：张建国(110105...)</td>
+<td class="px-6 py-4 text-green-600">成功</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors bg-red-50/10">
+<td class="px-6 py-4 font-mono text-gray-400">L882908</td>
+<td class="px-6 py-4 text-gray-600">2026-06-11 08:40:12</td>
+<td class="px-6 py-4 font-medium">user_01</td>
+<td class="px-6 py-4"><span class="text-red-600 font-bold">导出</span></td>
+<td class="px-6 py-4 text-gray-500">重点人口</td>
+<td class="px-6 py-4 font-mono text-gray-400">192.168.1.221</td>
+<td class="px-6 py-4">批量导出重点人口台账 (50条)</td>
+<td class="px-6 py-4 text-red-600 font-bold">触发预警</td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-mono text-gray-400">L882907</td>
+<td class="px-6 py-4 text-gray-600">2026-06-11 08:42:00</td>
+<td class="px-6 py-4 font-medium">admin</td>
+<td class="px-6 py-4"><span class="text-orange-600">审核</span></td>
+<td class="px-6 py-4 text-gray-500">家庭立户</td>
+<td class="px-6 py-4 font-mono text-gray-400">192.168.1.105</td>
+<td class="px-6 py-4">审核通过立户申请：H2026060101</td>
+<td class="px-6 py-4 text-green-600">成功</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-gray-50 border-t flex items-center justify-between text-xs">
+<span class="text-gray-400 italic">日志总量：85,420 条</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center border rounded hover:bg-white"><iconify-icon icon="mdi:chevron-left"></iconify-icon></button>
+<button class="w-8 h-8 flex items-center justify-center bg-blue-800 text-white rounded">1</button>
+<button class="w-8 h-8 flex items-center justify-center border rounded hover:bg-white">2</button>
+<button class="w-8 h-8 flex items-center justify-center border rounded hover:bg-white">3</button>
+<button class="w-8 h-8 flex items-center justify-center border rounded hover:bg-white"><iconify-icon icon="mdi:chevron-right"></iconify-icon></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>

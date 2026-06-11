@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>工作台 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/echarts.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<!-- Sidebar -->
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+<div class="p-4 border-t border-blue-900/50">
+<button class="flex items-center w-full px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-red-600/20 rounded transition-colors" onclick="confirmLogout()">
+<iconify-icon class="mr-2 text-lg" icon="mdi:logout"></iconify-icon>
+<span>退出登录</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-semibold text-gray-800">系统首页 / 工作台</h2>
+<span class="text-sm text-gray-500 ml-4 border-l pl-4 border-gray-200" id="current-time">2026-06-11 08:30:00</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<iconify-icon class="text-2xl text-gray-400 cursor-pointer hover:text-blue-600 transition-colors" icon="mdi:bell"></iconify-icon>
+<span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] flex items-center justify-center rounded-full">5</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-medium text-gray-800">系统管理员</p>
+<p class="text-xs text-gray-500">超级权限</p>
+</div>
+<img alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200" src="https://modao.cc/agent-py/media/generated_images/2026-06-11/188968fd959c4dec886bc8cbb599fbc0.jpg"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mr-4">
+<iconify-icon class="text-2xl" icon="mdi:account-plus"></iconify-icon>
+</div>
+<div>
+<p class="text-sm text-gray-500">今日新增人口</p>
+<h3 class="text-2xl font-bold text-gray-800">128</h3>
+</div>
+<div class="ml-auto text-green-500 text-xs font-medium flex items-center">
+<iconify-icon icon="mdi:arrow-up"></iconify-icon> 12%
+                    </div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 mr-4">
+<iconify-icon class="text-2xl" icon="mdi:file-clock"></iconify-icon>
+</div>
+<div>
+<p class="text-sm text-gray-500">待审核业务</p>
+<h3 class="text-2xl font-bold text-gray-800">45</h3>
+</div>
+<div class="ml-auto text-orange-500 text-xs font-medium">待处理</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600 mr-4">
+<iconify-icon class="text-2xl" icon="mdi:swap-horizontal"></iconify-icon>
+</div>
+<div>
+<p class="text-sm text-gray-500">本月迁入迁出</p>
+<h3 class="text-2xl font-bold text-gray-800">512</h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center">
+<div class="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center text-red-600 mr-4">
+<iconify-icon class="text-2xl" icon="mdi:alert-circle"></iconify-icon>
+</div>
+<div>
+<p class="text-sm text-gray-500">系统异常预警</p>
+<h3 class="text-2xl font-bold text-gray-800">3</h3>
+</div>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Charts Area -->
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold text-gray-800">人口类型统计趋势</h4>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs rounded-full cursor-pointer">近7天</span>
+<span class="px-3 py-1 hover:bg-gray-100 text-gray-500 text-xs rounded-full cursor-pointer transition-colors">近30天</span>
+</div>
+</div>
+<div class="w-full h-80" id="mainChart"></div>
+</div>
+<!-- Pending Tasks -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="p-6 border-b border-gray-100 flex items-center justify-between">
+<h4 class="font-bold text-gray-800">待办业务提醒</h4>
+<a class="text-blue-600 text-sm hover:underline" href="alert_center.html">查看全部</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+<tr>
+<th class="px-6 py-3 font-medium">业务类型</th>
+<th class="px-6 py-3 font-medium">申请人/对象</th>
+<th class="px-6 py-3 font-medium">申请时间</th>
+<th class="px-6 py-3 font-medium">紧急程度</th>
+<th class="px-6 py-3 font-medium">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 text-sm">
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">家庭立户审核</span></td>
+<td class="px-6 py-4 font-medium">张建国</td>
+<td class="px-6 py-4 text-gray-500">2026-06-10 14:20</td>
+<td class="px-6 py-4"><span class="flex items-center text-orange-500"><iconify-icon class="text-xl" icon="mdi:circle-medium"></iconify-icon> 中</span></td>
+<td class="px-6 py-4"><a class="text-blue-600 hover:underline" href="household.html">去处理</a></td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">户口迁入审批</span></td>
+<td class="px-6 py-4 font-medium">李晓梅</td>
+<td class="px-6 py-4 text-gray-500">2026-06-10 16:45</td>
+<td class="px-6 py-4"><span class="flex items-center text-red-500"><iconify-icon class="text-xl" icon="mdi:circle-medium"></iconify-icon> 高</span></td>
+<td class="px-6 py-4"><a class="text-blue-600 hover:underline" href="move_in.html">去处理</a></td>
+</tr>
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">居住证到期提醒</span></td>
+<td class="px-6 py-4 font-medium">王伟 (110105...)</td>
+<td class="px-6 py-4 text-gray-500">2026-06-11 09:00</td>
+<td class="px-6 py-4"><span class="flex items-center text-gray-400"><iconify-icon class="text-xl" icon="mdi:circle-medium"></iconify-icon> 低</span></td>
+<td class="px-6 py-4"><a class="text-blue-600 hover:underline" href="floating.html">去处理</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Quick Actions & News -->
+<div class="space-y-8">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+<h4 class="font-bold text-gray-800 mb-6">快捷操作</h4>
+<div class="grid grid-cols-2 gap-4">
+<a class="flex flex-col items-center p-4 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors group" href="resident.html">
+<iconify-icon class="text-3xl text-blue-600 group-hover:scale-110 transition-transform" icon="mdi:account-plus"></iconify-icon>
+<span class="text-xs mt-2 font-medium text-gray-700">新增常住人口</span>
+</a>
+<a class="flex flex-col items-center p-4 rounded-lg bg-green-50 hover:bg-green-100 transition-colors group" href="household.html">
+<iconify-icon class="text-3xl text-green-600 group-hover:scale-110 transition-transform" icon="mdi:home-plus"></iconify-icon>
+<span class="text-xs mt-2 font-medium text-gray-700">户口立户申请</span>
+</a>
+<a class="flex flex-col items-center p-4 rounded-lg bg-purple-50 hover:bg-purple-100 transition-colors group" href="certificate.html">
+<iconify-icon class="text-3xl text-purple-600 group-hover:scale-110 transition-transform" icon="mdi:card-plus"></iconify-icon>
+<span class="text-xs mt-2 font-medium text-gray-700">证件办理</span>
+</a>
+<a class="flex flex-col items-center p-4 rounded-lg bg-orange-50 hover:bg-orange-100 transition-colors group" href="backup.html">
+<iconify-icon class="text-3xl text-orange-600 group-hover:scale-110 transition-transform" icon="mdi:database-arrow-up"></iconify-icon>
+<span class="text-xs mt-2 font-medium text-gray-700">数据备份</span>
+</a>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+<h4 class="font-bold text-gray-800 mb-4">系统公告</h4>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-blue-600 mt-2 flex-none"></div>
+<div>
+<p class="text-sm font-medium text-gray-800">关于系统升级维护的通知</p>
+<p class="text-xs text-gray-400 mt-1">2026-06-10 18:00</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-gray-300 mt-2 flex-none"></div>
+<div>
+<p class="text-sm font-medium text-gray-800">新版户口迁移审批流程说明</p>
+<p class="text-xs text-gray-400 mt-1">2026-06-08 10:30</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-gray-300 mt-2 flex-none"></div>
+<div>
+<p class="text-sm font-medium text-gray-800">人口普查数据校验工作启动</p>
+<p class="text-xs text-gray-400 mt-1">2026-06-05 09:15</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Logout Confirm Modal -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="logoutModal">
+<div class="bg-white rounded-lg w-96 p-6 shadow-xl">
+<div class="flex items-center gap-3 text-orange-500 mb-4">
+<iconify-icon class="text-2xl" icon="mdi:alert"></iconify-icon>
+<h3 class="text-lg font-bold text-gray-800">确认退出</h3>
+</div>
+<p class="text-gray-600 mb-6">您确定要退出当前系统吗？未保存的操作可能会丢失。</p>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded transition-colors" onclick="closeLogoutModal()">取消</button>
+<button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors" onclick="logout()">确认退出</button>
+</div>
+</div>
+</div>
+<script>
+        // Update Time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.getFullYear() + '-' + 
+                               String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                               String(now.getDate()).padStart(2, '0') + ' ' + 
+                               String(now.getHours()).padStart(2, '0') + ':' + 
+                               String(now.getMinutes()).padStart(2, '0') + ':' + 
+                               String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('current-time').textContent = timeString;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Chart
+        const chartDom = document.getElementById('mainChart');
+        const myChart = echarts.init(chartDom);
+        const option = {
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['常住人口', '流动人口', '重点人口'], bottom: 0 },
+            grid: { left: '3%', right: '4%', bottom: '10%', containLabel: true },
+            xAxis: { type: 'category', boundaryGap: false, data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
+            yAxis: { type: 'value' },
+            series: [
+                { name: '常住人口', type: 'line', smooth: true, data: [1200, 1320, 1010, 1340, 900, 2300, 2100], itemStyle: {color: '#1a3a5c'} },
+                { name: '流动人口', type: 'line', smooth: true, data: [220, 182, 191, 234, 290, 330, 310], itemStyle: {color: '#4a90d9'} },
+                { name: '重点人口', type: 'line', smooth: true, data: [150, 232, 201, 154, 190, 330, 410], itemStyle: {color: '#f87171'} }
+            ]
+        };
+        myChart.setOption(option);
+        window.addEventListener('resize', () => myChart.resize());
+
+        // Logout logic
+        function confirmLogout() { document.getElementById('logoutModal').style.display = 'flex'; }
+        function closeLogoutModal() { document.getElementById('logoutModal').style.display = 'none'; }
+        function logout() { window.location.href = 'login.html'; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>消息预警中心 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden text-sm">
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<h2 class="text-lg font-semibold text-gray-800">消息预警中心</h2>
+<div class="text-gray-400">未读消息：<span class="text-red-600 font-bold">5</span> 条</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="flex border-b border-gray-200 mb-6 gap-8">
+<button class="pb-3 border-b-2 border-blue-600 text-blue-600 font-bold">全部消息</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700">待办业务</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700">到期提醒</button>
+<button class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700">系统通知</button>
+</div>
+<div class="space-y-4">
+<!-- Message Card -->
+<div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4 hover:border-blue-200 transition-colors group">
+<div class="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 flex-none mt-1">
+<iconify-icon class="text-xl" icon="mdi:file-document-edit"></iconify-icon>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-gray-800">家庭立户申请待审核</h4>
+<span class="text-xs text-gray-400">10分钟前</span>
+</div>
+<p class="text-gray-500 line-clamp-1">户主张建国提交了新的家庭立户申请，请及时处理。</p>
+<div class="mt-3 flex gap-2">
+<a class="px-3 py-1 bg-blue-600 text-white rounded text-[10px] hover:bg-blue-700" href="household.html">去处理</a>
+<button class="px-3 py-1 bg-gray-100 text-gray-500 rounded text-[10px] hover:bg-gray-200">标记已读</button>
+</div>
+</div>
+<div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4 hover:border-blue-200 transition-colors group">
+<div class="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-600 flex-none mt-1">
+<iconify-icon class="text-xl" icon="mdi:account-alert"></iconify-icon>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-gray-800">重点人员超期未回访预警</h4>
+<span class="text-xs text-gray-400">1小时前</span>
+</div>
+<p class="text-gray-500 line-clamp-1">重点人员陆某某(320501...)已超过30天未执行动态回访，请立即指派人员跟进。</p>
+<div class="mt-3 flex gap-2">
+<a class="px-3 py-1 bg-red-600 text-white rounded text-[10px] hover:bg-red-700" href="key_population.html">立即回访</a>
+</div>
+</div>
+<div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4 hover:border-blue-200 transition-colors group">
+<div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center text-yellow-600 flex-none mt-1">
+<iconify-icon class="text-xl" icon="mdi:card-account-details"></iconify-icon>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-gray-800">居住证到期提醒</h4>
+<span class="text-xs text-gray-400">今天 09:00</span>
+</div>
+<p class="text-gray-500 line-clamp-1">流动人口王伟的居住证将于2026-07-10到期，系统已自动发送短信通知。</p>
+<div class="mt-3 flex gap-2">
+<a class="px-3 py-1 bg-blue-600 text-white rounded text-[10px]" href="floating.html">查看详情</a>
+</div>
+</div>
+<div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4 opacity-60">
+<div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-none mt-1">
+<iconify-icon class="text-xl" icon="mdi:information"></iconify-icon>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-gray-800">系统备份成功</h4>
+<span class="text-xs text-gray-400">昨天 23:00</span>
+</div>
+<p class="text-gray-500">定时任务：系统全量数据库备份已成功完成，备份文件：db_backup_20260610.sql。</p>
+</div>
+<div class="text-[10px] text-gray-400 mt-2">已读</div>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>

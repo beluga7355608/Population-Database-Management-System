@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>统计报表 - 人口数据库管理系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/echarts.min.js"></script>
+<style>
+        .sidebar-active { background-color: #2b5a8a; border-left: 4px solid #4a90d9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
+<aside class="w-60 bg-[#1a3a5c] text-white flex flex-col flex-none">
+<div class="p-6 flex items-center gap-3 border-b border-blue-900/50">
+<iconify-icon class="text-3xl text-blue-400" icon="mdi:shield-account"></iconify-icon>
+<span class="text-lg font-bold tracking-wider">人口管理系统</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
+<span>系统首页</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
+<span>家庭立户</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
+<span>户口迁入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
+<span>户口迁出</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
+<span>常住人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
+<span>流动人口</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
+<span>重点人口</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
+<span>证件管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<a class="flex items-center px-6 py-3 sidebar-active text-white" href="statistics.html">
+<iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
+<span>统计报表</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden text-sm">
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
+<h2 class="text-lg font-semibold text-gray-800">系统管理 / 统计报表</h2>
+<div class="flex gap-2">
+<button class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded border border-blue-200 hover:bg-blue-100 flex items-center gap-2">
+<iconify-icon icon="mdi:file-excel"></iconify-icon> 导出Excel
+                </button>
+<button class="bg-blue-800 text-white px-4 py-1.5 rounded hover:bg-blue-900 flex items-center gap-2">
+<iconify-icon icon="mdi:printer"></iconify-icon> 打印报表
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm mb-8 flex flex-wrap gap-6 items-end">
+<div>
+<label class="block text-xs font-bold text-gray-400 mb-1">统计维度</label>
+<select class="border rounded px-3 py-1.5 outline-none w-40">
+<option>按人口类型</option>
+<option>按时间趋势</option>
+<option>按地区分布</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-gray-400 mb-1">时间范围</label>
+<div class="flex gap-2">
+<input class="border rounded px-3 py-1.5 outline-none w-40" type="month" value="2026-01"/>
+<span class="text-gray-300 self-center">-</span>
+<input class="border rounded px-3 py-1.5 outline-none w-40" type="month" value="2026-06"/>
+</div>
+</div>
+<button class="bg-blue-800 text-white px-8 py-2 rounded font-bold">生成分析报表</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+<h4 class="font-bold text-gray-800 mb-6">人口构成占比分析</h4>
+<div class="w-full h-80" id="pieChart"></div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+<h4 class="font-bold text-gray-800 mb-6">月度业务办理趋势</h4>
+<div class="w-full h-80" id="lineChart"></div>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="p-6 border-b border-gray-100">
+<h4 class="font-bold text-gray-800">数据分析摘要表</h4>
+</div>
+<table class="w-full text-left">
+<thead class="bg-gray-50 text-gray-400 text-[10px] font-bold uppercase">
+<tr>
+<th class="px-6 py-3">分类名称</th>
+<th class="px-6 py-3">当前总量</th>
+<th class="px-6 py-3">较上月变动</th>
+<th class="px-6 py-3">占比</th>
+<th class="px-6 py-3">状态评估</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr>
+<td class="px-6 py-4 font-medium">常住人口</td>
+<td class="px-6 py-4">854,201</td>
+<td class="px-6 py-4 text-green-600">+1,204</td>
+<td class="px-6 py-4">78.5%</td>
+<td class="px-6 py-4"><span class="text-green-600">增长稳健</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">流动人口</td>
+<td class="px-6 py-4">124,550</td>
+<td class="px-6 py-4 text-red-600">-852</td>
+<td class="px-6 py-4">11.4%</td>
+<td class="px-6 py-4"><span class="text-orange-600">波动较大</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium">重点人口</td>
+<td class="px-6 py-4">2,145</td>
+<td class="px-6 py-4 text-gray-500">+12</td>
+<td class="px-6 py-4">0.2%</td>
+<td class="px-6 py-4"><span class="text-blue-600">管控受控</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<script>
+        const pieChart = echarts.init(document.getElementById('pieChart'));
+        pieChart.setOption({
+            tooltip: { trigger: 'item' },
+            legend: { bottom: '0%' },
+            series: [{
+                name: '人口类型',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: { borderRadius: 10, borderColor: '#fff', borderWidth: 2 },
+                label: { show: false },
+                data: [
+                    { value: 854201, name: '常住人口', itemStyle: {color: '#1a3a5c'} },
+                    { value: 124550, name: '流动人口', itemStyle: {color: '#4a90d9'} },
+                    { value: 2145, name: '重点人口', itemStyle: {color: '#f87171'} },
+                    { value: 105000, name: '注销/归档', itemStyle: {color: '#cbd5e1'} }
+                ]
+            }]
+        });
+
+        const lineChart = echarts.init(document.getElementById('lineChart'));
+        lineChart.setOption({
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: ['1月', '2月', '3月', '4月', '5月', '6月'] },
+            yAxis: { type: 'value' },
+            series: [
+                { name: '迁入业务', type: 'bar', data: [120, 200, 150, 80, 70, 110], itemStyle: {color: '#1a3a5c'} },
+                { name: '迁出业务', type: 'bar', data: [80, 150, 120, 60, 50, 90], itemStyle: {color: '#4a90d9'} }
+            ]
+        });
+
+        window.addEventListener('resize', () => {
+            pieChart.resize();
+            lineChart.resize();
+        });
+    </script>
+</body>
+</html>
