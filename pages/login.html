@@ -61,24 +61,67 @@
                 </button>
 </div>
 </form>
+<div class="mt-6 pt-4 border-t border-gray-100">
+<p class="text-xs text-gray-400 text-center mb-3">快速演示账号（点击登录）</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="text-left px-3 py-2 bg-red-50 hover:bg-red-100 rounded-md text-xs transition-colors" onclick="quickLogin('admin','admin123','super_admin')">
+<span class="font-bold text-red-700 block">超级管理员</span>
+<span class="text-gray-400">admin / admin123</span>
+</button>
+<button class="text-left px-3 py-2 bg-blue-50 hover:bg-blue-100 rounded-md text-xs transition-colors" onclick="quickLogin('officer','officer123','police_officer')">
+<span class="font-bold text-blue-700 block">户籍民警</span>
+<span class="text-gray-400">officer / officer123</span>
+</button>
+<button class="text-left px-3 py-2 bg-green-50 hover:bg-green-100 rounded-md text-xs transition-colors" onclick="quickLogin('auditor','auditor123','auditor')">
+<span class="font-bold text-green-700 block">审核员</span>
+<span class="text-gray-400">auditor / auditor123</span>
+</button>
+<button class="text-left px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-md text-xs transition-colors" onclick="quickLogin('viewer','viewer123','viewer')">
+<span class="font-bold text-gray-700 block">普通查询员</span>
+<span class="text-gray-400">viewer / viewer123</span>
+</button>
+</div>
+</div>
 <div class="mt-8 pt-6 border-t border-gray-100 text-center">
-<p class="text-xs text-gray-400">© 2026 东软集团IT人才实训中心 版权所有</p>
+<p class="text-xs text-gray-400">&copy; 2026 东软集团IT人才实训中心 版权所有</p>
 </div>
 </div>
 <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
+    // 预设账号和角色映射
+    const ACCOUNTS = {
+        'admin':   { password: 'admin123',   role: 'super_admin',    name: '系统管理员' },
+        'officer': { password: 'officer123', role: 'police_officer', name: '张民警' },
+        'auditor': { password: 'auditor123', role: 'auditor',        name: '王审计' },
+        'viewer':  { password: 'viewer123',  role: 'viewer',         name: '李查询' },
+    };
 
-            if (!user || !pass) {
-                alert('账号/密码不能为空');
-                return;
-            }
+    function quickLogin(user, pass, role) {
+        document.getElementById('username').value = user;
+        document.getElementById('password').value = pass;
+        doLogin(user, pass);
+    }
 
-            // 模拟登录成功跳转
-            window.location.href = 'index.html';
-        }
-    </script>
+    function handleLogin(event) {
+        event.preventDefault();
+        const user = document.getElementById('username').value.trim();
+        const pass = document.getElementById('password').value;
+        if (!user || !pass) { alert('账号/密码不能为空'); return; }
+        doLogin(user, pass);
+    }
+
+    function doLogin(user, pass) {
+        const acct = ACCOUNTS[user];
+        if (!acct) { alert('账号不存在，请检查后重试'); return; }
+        if (acct.password !== pass) { alert('密码错误，请重试'); return; }
+
+        // 存储登录信息到 sessionStorage
+        sessionStorage.setItem('userRole', acct.role);
+        sessionStorage.setItem('userName', acct.name);
+        sessionStorage.setItem('username', user);
+        sessionStorage.setItem('loginTime', new Date().toISOString());
+
+        window.location.href = 'index.html';
+    }
+</script>
 </body>
 </html>

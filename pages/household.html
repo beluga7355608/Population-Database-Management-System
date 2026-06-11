@@ -21,59 +21,136 @@
 <span class="text-lg font-bold tracking-wider">人口管理系统</span>
 </div>
 <nav class="flex-1 overflow-y-auto py-4">
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="index.html" data-roles="super_admin,police_officer,auditor,viewer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:view-dashboard"></iconify-icon>
 <span>系统首页</span>
 </a>
-<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">户口业务</div>
-<a class="flex items-center px-6 py-3 sidebar-active text-white" href="household.html">
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer,auditor">户口业务</div>
+<a class="flex items-center px-6 py-3 sidebar-active text-white hover:bg-blue-800/50 hover:text-white transition-colors" href="household.html" data-roles="super_admin,police_officer,auditor">
 <iconify-icon class="mr-3 text-xl" icon="mdi:home-group"></iconify-icon>
 <span>家庭立户</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="household_member.html" data-roles="super_admin,police_officer,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-details"></iconify-icon>
+<span>家庭成员管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_in.html" data-roles="super_admin,police_officer,auditor">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-right"></iconify-icon>
 <span>户口迁入</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="move_out.html" data-roles="super_admin,police_officer,auditor">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-arrow-left"></iconify-icon>
 <span>户口迁出</span>
 </a>
-<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">人口管理</div>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="birth_register.html" data-roles="super_admin,police_officer,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:baby-face-outline"></iconify-icon>
+<span>出生登记</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="death_register.html" data-roles="super_admin,police_officer,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:book-cancel-outline"></iconify-icon>
+<span>死亡注销</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer,auditor,viewer">人口管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="resident.html" data-roles="super_admin,police_officer,auditor,viewer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
 <span>常住人口</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html" data-roles="super_admin,police_officer,auditor,viewer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
 <span>流动人口</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="key_population.html" data-roles="super_admin,police_officer,auditor">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-alert"></iconify-icon>
 <span>重点人口</span>
 </a>
-<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4">系统管理</div>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="population_search.html" data-roles="super_admin,police_officer,auditor,viewer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-search"></iconify-icon>
+<span>综合查询</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="population_change.html" data-roles="super_admin,police_officer,auditor,viewer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-switch"></iconify-icon>
+<span>变动记录</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer">业务办理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="certificate.html" data-roles="super_admin,police_officer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:card-account-details"></iconify-icon>
 <span>证件管理</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html">
-<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
-<span>日志审计</span>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="workflow_manage.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:sitemap"></iconify-icon>
+<span>工作流管理</span>
 </a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html">
-<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
-<span>预警中心</span>
-</a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html">
-<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
-<span>备份恢复</span>
-</a>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html">
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer,auditor,viewer">统计报表</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="statistics.html" data-roles="super_admin,police_officer,auditor,viewer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:chart-bar"></iconify-icon>
 <span>统计报表</span>
 </a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="audit_report.html" data-roles="super_admin,police_officer,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:file-chart"></iconify-icon>
+<span>审计报告</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer">数据管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="data_import.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-import"></iconify-icon>
+<span>数据导入</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="data_export.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-export"></iconify-icon>
+<span>数据导出</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="data_dict.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:book-open-variant"></iconify-icon>
+<span>数据字典</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="backup.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:database-sync"></iconify-icon>
+<span>备份恢复</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin">系统管理</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="user_manage.html" data-roles="super_admin">
+<iconify-icon class="mr-3 text-xl" icon="mdi:account-cog"></iconify-icon>
+<span>用户管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="role_manage.html" data-roles="super_admin">
+<iconify-icon class="mr-3 text-xl" icon="mdi:shield-account"></iconify-icon>
+<span>角色权限</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="department_manage.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:office-building"></iconify-icon>
+<span>组织机构</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="address_manage.html" data-roles="super_admin,police_officer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:map-marker-radius"></iconify-icon>
+<span>地址管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="notice_manage.html" data-roles="super_admin,police_officer,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bullhorn"></iconify-icon>
+<span>公告管理</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="system_config.html" data-roles="super_admin">
+<iconify-icon class="mr-3 text-xl" icon="mdi:cog"></iconify-icon>
+<span>系统配置</span>
+</a>
+<div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,auditor">系统监控</div>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="log_audit.html" data-roles="super_admin,auditor">
+<iconify-icon class="mr-3 text-xl" icon="mdi:history"></iconify-icon>
+<span>日志审计</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="alert_center.html" data-roles="super_admin,police_officer,auditor,viewer">
+<iconify-icon class="mr-3 text-xl" icon="mdi:bell-ring"></iconify-icon>
+<span>预警中心</span>
+</a>
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="online_monitor.html" data-roles="super_admin">
+<iconify-icon class="mr-3 text-xl" icon="mdi:monitor-dashboard"></iconify-icon>
+<span>在线监控</span>
+</a>
 </nav>
-</aside>
+<div class="p-4 border-t border-blue-900/50" data-roles="super_admin,police_officer,auditor,viewer">
+<button class="flex items-center w-full px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-red-600/20 rounded transition-colors" onclick="confirmLogout()">
+<iconify-icon class="mr-2 text-lg" icon="mdi:logout"></iconify-icon>
+<span>退出登录</span>
+</button>
+</div></aside>
 <!-- Main Content -->
 <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
 <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
@@ -226,6 +303,118 @@
 <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    
+        function confirmLogout() { document.getElementById('logoutModal').style.display = 'flex'; }
+        function closeLogoutModal() { document.getElementById('logoutModal').style.display = 'none'; }
+        function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
+
     </script>
+
+
+<!-- Logout Confirm Modal -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="logoutModal">
+<div class="bg-white rounded-lg w-96 p-6 shadow-xl">
+<div class="flex items-center gap-3 text-orange-500 mb-4">
+<iconify-icon class="text-2xl" icon="mdi:alert"></iconify-icon>
+<h3 class="text-lg font-bold text-gray-800">确认退出</h3>
+</div>
+<p class="text-gray-600 mb-6">您确定要退出当前系统吗？未保存的操作可能会丢失。</p>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded transition-colors" onclick="closeLogoutModal()">取消</button>
+<button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors" onclick="logout()">确认退出</button>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+    var role = sessionStorage.getItem('userRole');
+    if (!role) { window.location.href = 'login.html'; return; }
+
+    // Page-level access control: which roles can access which pages
+    var pageAccess = {
+        'user_manage.html': ['super_admin'],
+        'role_manage.html': ['super_admin'],
+        'system_config.html': ['super_admin'],
+        'online_monitor.html': ['super_admin'],
+        'key_population.html': ['super_admin', 'police_officer', 'auditor'],
+        'household.html': ['super_admin', 'police_officer', 'auditor'],
+        'household_member.html': ['super_admin', 'police_officer', 'auditor'],
+        'move_in.html': ['super_admin', 'police_officer', 'auditor'],
+        'move_out.html': ['super_admin', 'police_officer', 'auditor'],
+        'birth_register.html': ['super_admin', 'police_officer', 'auditor'],
+        'death_register.html': ['super_admin', 'police_officer', 'auditor'],
+        'certificate.html': ['super_admin', 'police_officer'],
+        'workflow_manage.html': ['super_admin', 'police_officer'],
+        'audit_report.html': ['super_admin', 'police_officer', 'auditor'],
+        'data_import.html': ['super_admin', 'police_officer'],
+        'data_export.html': ['super_admin', 'police_officer'],
+        'data_dict.html': ['super_admin', 'police_officer'],
+        'backup.html': ['super_admin', 'police_officer'],
+        'notice_manage.html': ['super_admin', 'police_officer', 'auditor'],
+        'department_manage.html': ['super_admin', 'police_officer'],
+        'address_manage.html': ['super_admin', 'police_officer'],
+        'log_audit.html': ['super_admin', 'auditor'],
+    };
+
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    var allowed = pageAccess[currentPage];
+    if (allowed && allowed.indexOf(role) === -1) {
+        alert('您没有权限访问此页面，即将跳转到系统首页。');
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // Update header to show current user
+    var userName = sessionStorage.getItem('userName') || '';
+    var roleNames = { super_admin: '超级管理员', police_officer: '户籍民警', auditor: '审核员', viewer: '普通查询员' };
+    var roleName = roleNames[role] || '';
+
+    // Update user info in header if present
+    var nameEls = document.querySelectorAll('header .font-medium, header p.font-medium');
+    nameEls.forEach(function(el) {
+        var txt = el.textContent.trim();
+        if (txt === '系统管理员' || txt === '管理员') {
+            el.textContent = userName || txt;
+        }
+    });
+    var roleEls = document.querySelectorAll('header .text-xs, header p.text-xs');
+    roleEls.forEach(function(el) {
+        var txt = el.textContent.trim();
+        if (txt === '超级权限' || txt === '管理员') {
+            el.textContent = roleName;
+        }
+    });
+
+    // Update the header user area if it exists (some pages have different header format)
+    var headerUserEls = document.querySelectorAll('header');
+    headerUserEls.forEach(function(header) {
+        // Look for existing user display and update it
+        var spans = header.querySelectorAll('span');
+        spans.forEach(function(span) {
+            var t = span.textContent.trim();
+            if (t === '系统管理员') span.textContent = userName;
+            if (t === '超级权限') span.textContent = roleName;
+        });
+    });
+
+    // Hide sidebar items that don't match the user role
+    document.querySelectorAll('[data-roles]').forEach(function(el) {
+        var roles = el.getAttribute('data-roles').split(',');
+        if (roles.indexOf(role) === -1) {
+            el.style.display = 'none';
+        }
+    });
+
+    // Set correct active state: find the link matching current page
+    document.querySelectorAll('nav a[href]').forEach(function(link) {
+        link.classList.remove('sidebar-active', 'text-white');
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('sidebar-active', 'text-white');
+        }
+    });
+})();
+</script>
+
 </body>
 </html>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>流动人口管理 - 人口数据库管理系统</title>
+<title>数据导入 - 人口数据库管理系统</title>
 <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
 <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
 <style>
@@ -54,7 +54,7 @@
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-group"></iconify-icon>
 <span>常住人口</span>
 </a>
-<a class="flex items-center px-6 py-3 sidebar-active text-white hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html" data-roles="super_admin,police_officer,auditor,viewer">
+<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="floating.html" data-roles="super_admin,police_officer,auditor,viewer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:account-clock"></iconify-icon>
 <span>流动人口</span>
 </a>
@@ -89,7 +89,7 @@
 <span>审计报告</span>
 </a>
 <div class="px-6 py-2 text-xs text-gray-400 uppercase tracking-wider mt-4" data-roles="super_admin,police_officer">数据管理</div>
-<a class="flex items-center px-6 py-3 text-gray-300 hover:bg-blue-800/50 hover:text-white transition-colors" href="data_import.html" data-roles="super_admin,police_officer">
+<a class="flex items-center px-6 py-3 sidebar-active text-white hover:bg-blue-800/50 hover:text-white transition-colors" href="data_import.html" data-roles="super_admin,police_officer">
 <iconify-icon class="mr-3 text-xl" icon="mdi:database-import"></iconify-icon>
 <span>数据导入</span>
 </a>
@@ -152,153 +152,91 @@
 </div></aside>
 <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
 <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-none">
-<h2 class="text-lg font-semibold text-gray-800">人口管理 / 流动人口</h2>
+<h2 class="text-lg font-semibold text-gray-800">数据管理 / 数据导入</h2>
 </header>
 <div class="flex-1 overflow-y-auto p-8">
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8 flex flex-wrap items-center justify-between gap-4">
-<div class="flex gap-4">
-<input class="border rounded-md px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 w-48" placeholder="姓名/身份证号" type="text"/>
-<select class="border rounded-md px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
-<option>到期状态</option>
-<option>正常</option>
-<option class="text-orange-600 font-medium">即将到期 (30天内)</option>
-<option class="text-red-600 font-medium">已过期</option>
-</select>
-<button class="bg-blue-800 text-white px-6 py-2 rounded-md text-sm hover:bg-blue-900 transition-colors">查询</button>
+<div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm mb-8 text-center">
+<div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-6">
+<iconify-icon class="text-4xl" icon="mdi:file-upload-outline"></iconify-icon>
 </div>
-<button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-blue-700 transition-colors" onclick="openModal('addModal')">
-<iconify-icon icon="mdi:account-plus"></iconify-icon>
-                    新增流动人口登记
-                </button>
+<h3 class="text-xl font-bold text-gray-800 mb-2">批量数据导入</h3>
+<p class="text-gray-500 mb-6">支持Excel (.xlsx)、CSV (.csv) 格式的人口数据批量导入，单次最大支持 10,000 条记录</p>
+<div class="border-2 border-dashed border-blue-300 rounded-xl p-10 bg-blue-50/30 mb-6 max-w-2xl mx-auto">
+<iconify-icon class="text-6xl text-blue-400 mb-4" icon="mdi:cloud-upload-outline"></iconify-icon>
+<p class="text-gray-600 font-medium mb-2">将文件拖拽到此处，或点击选择文件</p>
+<p class="text-xs text-gray-400">支持 .xlsx / .xls / .csv 格式，文件大小不超过 50MB</p>
+<input class="hidden" type="file" id="importFile"/>
+<button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700" onclick="document.getElementById('importFile').click()">选择文件</button>
+</div>
+<div class="flex items-center justify-center gap-4 text-xs text-gray-400">
+<span class="flex items-center gap-1"><iconify-icon icon="mdi:download"></iconify-icon> <a class="text-blue-600 hover:underline" href="#">下载导入模板</a></span>
+<span class="border-l pl-4">导入说明文档</span>
+</div>
 </div>
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="p-6 border-b border-gray-100 flex items-center justify-between">
+<h4 class="font-bold text-gray-800">导入历史记录</h4>
+</div>
 <table class="w-full text-left">
-<thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+<thead class="bg-gray-50 text-gray-400 text-[10px] font-bold uppercase">
 <tr>
-<th class="px-6 py-4 font-medium">姓名</th>
-<th class="px-6 py-4 font-medium">身份证号</th>
-<th class="px-6 py-4 font-medium">户籍地</th>
-<th class="px-6 py-4 font-medium">现居住地</th>
-<th class="px-6 py-4 font-medium">登记日期</th>
-<th class="px-6 py-4 font-medium">居住证有效期</th>
-<th class="px-6 py-4 font-medium">状态</th>
-<th class="px-6 py-4 font-medium">操作</th>
+<th class="px-6 py-3">文件名</th>
+<th class="px-6 py-3">导入时间</th>
+<th class="px-6 py-3">导入类型</th>
+<th class="px-6 py-3">总记录数</th>
+<th class="px-6 py-3">成功</th>
+<th class="px-6 py-3">失败</th>
+<th class="px-6 py-3">操作人</th>
+<th class="px-6 py-3">状态</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-gray-100 text-sm">
 <tr class="hover:bg-gray-50">
-<td class="px-6 py-4 font-medium">王伟</td>
-<td class="px-6 py-4 font-mono">110105199001012233</td>
-<td class="px-6 py-4 text-gray-500">四川省成都市...</td>
-<td class="px-6 py-4">朝阳区大望路12号...</td>
-<td class="px-6 py-4 text-gray-400">2026-01-10</td>
-<td class="px-6 py-4 text-gray-800">2026-07-10</td>
-<td class="px-6 py-4"><span class="px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs">即将到期</span></td>
-<td class="px-6 py-4">
-<div class="flex gap-3 text-blue-600">
-<button class="hover:underline">续期</button>
-<button class="hover:underline">注销</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-gray-50 bg-red-50/20">
-<td class="px-6 py-4 font-medium">刘芳</td>
-<td class="px-6 py-4 font-mono">420101198512125566</td>
-<td class="px-6 py-4 text-gray-500">湖北省武汉市...</td>
-<td class="px-6 py-4">海淀区学院路8号...</td>
-<td class="px-6 py-4 text-gray-400">2025-06-01</td>
-<td class="px-6 py-4 text-red-600 font-medium">2026-06-01</td>
-<td class="px-6 py-4"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs">已过期</span></td>
-<td class="px-6 py-4">
-<button class="bg-red-600 text-white px-3 py-1 rounded text-xs hover:bg-red-700">处理预警</button>
-</td>
+<td class="px-6 py-4 font-mono">常住人口_20260610.xlsx</td>
+<td class="px-6 py-4 text-gray-500">2026-06-10 15:30</td>
+<td class="px-6 py-4">常住人口</td>
+<td class="px-6 py-4">5,200</td>
+<td class="px-6 py-4 text-green-600 font-medium">5,198</td>
+<td class="px-6 py-4 text-red-600">2</td>
+<td class="px-6 py-4">admin</td>
+<td class="px-6 py-4"><span class="text-green-600 flex items-center gap-1"><iconify-icon icon="mdi:check-circle"></iconify-icon> 完成</span></td>
 </tr>
 <tr class="hover:bg-gray-50">
-<td class="px-6 py-4 font-medium">赵明</td>
-<td class="px-6 py-4 font-mono">330102199505059900</td>
-<td class="px-6 py-4 text-gray-500">浙江省杭州市...</td>
-<td class="px-6 py-4">西城区月坛街道...</td>
-<td class="px-6 py-4 text-gray-400">2026-05-20</td>
-<td class="px-6 py-4 text-gray-800">2027-05-20</td>
-<td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">正常</span></td>
-<td class="px-6 py-4">
-<button class="text-blue-600 hover:underline">查看详情</button>
-</td>
+<td class="px-6 py-4 font-mono">流动人口_20260605.csv</td>
+<td class="px-6 py-4 text-gray-500">2026-06-05 09:15</td>
+<td class="px-6 py-4">流动人口</td>
+<td class="px-6 py-4">850</td>
+<td class="px-6 py-4 text-green-600 font-medium">850</td>
+<td class="px-6 py-4">0</td>
+<td class="px-6 py-4">admin</td>
+<td class="px-6 py-4"><span class="text-green-600 flex items-center gap-1"><iconify-icon icon="mdi:check-circle"></iconify-icon> 完成</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </main>
-<!-- Add Modal -->
-<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="addModal">
-<div class="bg-white rounded-lg w-[700px] shadow-xl overflow-hidden">
-<div class="px-6 py-4 bg-gray-50 border-b flex items-center justify-between">
-<h3 class="font-bold text-gray-800">新增流动人口登记</h3>
-<button class="text-gray-400 hover:text-gray-600 text-xl" onclick="closeModal('addModal')"><iconify-icon icon="mdi:close"></iconify-icon></button>
-</div>
-<form class="p-6 grid grid-cols-2 gap-4">
-<div class="col-span-1">
-<label class="block text-xs font-medium text-gray-500 mb-1">姓名 <span class="text-red-500">*</span></label>
-<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
-</div>
-<div class="col-span-1">
-<label class="block text-xs font-medium text-gray-500 mb-1">身份证号 <span class="text-red-500">*</span></label>
-<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
-</div>
-<div class="col-span-2">
-<label class="block text-xs font-medium text-gray-500 mb-1">户籍所在地 <span class="text-red-500">*</span></label>
-<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
-</div>
-<div class="col-span-2">
-<label class="block text-xs font-medium text-gray-500 mb-1">现居住地址 <span class="text-red-500">*</span></label>
-<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="text"/>
-</div>
-<div class="col-span-1">
-<label class="block text-xs font-medium text-gray-500 mb-1">居住事由</label>
-<select class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500">
-<option>务工</option>
-<option>经商</option>
-<option>就读</option>
-<option>随迁</option>
-</select>
-</div>
-<div class="col-span-1">
-<label class="block text-xs font-medium text-gray-500 mb-1">居住证有效期至</label>
-<input class="w-full px-3 py-2 border rounded-md text-sm outline-none focus:ring-2 focus:ring-blue-500" type="date"/>
-</div>
-<div class="col-span-2 mt-4 flex justify-end gap-3">
-<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded text-sm" onclick="closeModal('addModal')" type="button">取消</button>
-<button class="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700" type="submit">保存登记</button>
-</div>
-</form>
-</div>
-</div>
-<script>
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    
-        function confirmLogout() { document.getElementById('logoutModal').style.display = 'flex'; }
-        function closeLogoutModal() { document.getElementById('logoutModal').style.display = 'none'; }
-        function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
-
-    </script>
-
-
-<!-- Logout Confirm Modal -->
 <div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" id="logoutModal">
 <div class="bg-white rounded-lg w-96 p-6 shadow-xl">
 <div class="flex items-center gap-3 text-orange-500 mb-4">
 <iconify-icon class="text-2xl" icon="mdi:alert"></iconify-icon>
 <h3 class="text-lg font-bold text-gray-800">确认退出</h3>
 </div>
-<p class="text-gray-600 mb-6">您确定要退出当前系统吗？未保存的操作可能会丢失。</p>
+<p class="text-gray-600 mb-6">您确定要退出当前系统吗？</p>
 <div class="flex justify-end gap-3">
-<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded transition-colors" onclick="closeLogoutModal()">取消</button>
-<button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors" onclick="logout()">确认退出</button>
+<button class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded" onclick="closeModal('logoutModal')">取消</button>
+<button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700" onclick="logout()">确认退出</button>
 </div>
 </div>
 </div>
+<script>
+        function updateTime() { const n = new Date(); document.getElementById('current-time').textContent = n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')+' '+String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0')+':'+String(n.getSeconds()).padStart(2,'0'); }
+        setInterval(updateTime, 1000); updateTime();
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function confirmLogout() { document.getElementById('logoutModal').style.display = 'flex'; }
+        function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
+    </script>
 
 <script>
 (function(){
