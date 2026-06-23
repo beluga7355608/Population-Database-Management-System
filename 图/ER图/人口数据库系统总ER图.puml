@@ -1,0 +1,363 @@
+﻿@startuml 人口数据库管理系统-系统总ER图
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 12
+skinparam roundCorner 0
+
+title <b>人口数据库管理系统 - 系统总ER图</b>\n经典Chen转换 | 实体命名遵循Java开发手册MySQL规约（业务名称_表的作用）
+
+' ===== 用户与权限模块 =====
+entity "用户" as user #d5e8d4 {
+  * user_id : VARCHAR(25) <<PK>>
+  --
+  user_name : VARCHAR(50)
+  passwd : VARCHAR(16)
+  phone : VARCHAR(11)
+  id_card : VARCHAR(18)
+  role : TINYINT
+  state : TINYINT
+  retry_count : INT
+  last_login_time : VARCHAR(20)
+  last_login_ip : VARCHAR(45)
+  create_time : VARCHAR(20)
+}
+
+entity "角色权限" as role_permission #d5e8d4 {
+  * perm_id : VARCHAR(25) <<PK>>
+  --
+  role : TINYINT
+  menu_list : TEXT
+  func_list : TEXT
+}
+
+' ===== 系统支撑模块 =====
+entity "系统操作日志" as system_operation_log #e5e5e5 {
+  * log_id : VARCHAR(25) <<PK>>
+  --
+  operator_id : VARCHAR(25) <<FK>>
+  op_type : TINYINT
+  module_name : VARCHAR(50)
+  op_content : VARCHAR(500)
+  op_time : VARCHAR(20)
+}
+
+entity "消息提醒" as notification #e5e5e5 {
+  * notif_id : VARCHAR(25) <<PK>>
+  --
+  target_user_id : VARCHAR(25) <<FK>>
+  notif_type : TINYINT
+  title : VARCHAR(100)
+  content : VARCHAR(500)
+  is_read : TINYINT
+  create_time : VARCHAR(20)
+}
+
+entity "数据备份日志" as data_backup_log #e5e5e5 {
+  * backup_id : VARCHAR(25) <<PK>>
+  --
+  backup_type : TINYINT
+  file_name : VARCHAR(255)
+  file_size : INT
+  operator_id : VARCHAR(25) <<FK>>
+  backup_time : VARCHAR(20)
+}
+
+' ===== 家庭户口模块 =====
+entity "家庭户口档案" as household_record #dae8fc {
+  * hukou_no : VARCHAR(20) <<PK>>
+  --
+  apply_no : VARCHAR(25) <<UK>>
+  householder_name : VARCHAR(50)
+  householder_id : VARCHAR(18)
+  address : VARCHAR(200)
+  phone : VARCHAR(11)
+  reason : VARCHAR(500)
+  apply_date : VARCHAR(20)
+  operator_id : VARCHAR(25) <<FK>>
+  auditor_id : VARCHAR(25) <<FK>>
+  status : TINYINT
+  reject_reason : VARCHAR(500)
+  create_time : VARCHAR(20)
+  update_time : VARCHAR(20)
+}
+
+entity "家庭成员" as household_member #dae8fc {
+  * member_id : VARCHAR(25) <<PK>>
+  --
+  hukou_no : VARCHAR(20) <<FK>>
+  id_card : VARCHAR(18)
+  name : VARCHAR(50)
+  gender : TINYINT
+  age : INT
+  relation : VARCHAR(20)
+  phone : VARCHAR(11)
+  occupation : VARCHAR(50)
+  create_time : VARCHAR(20)
+}
+
+entity "户口操作日志" as household_operation_log #dae8fc {
+  * log_id : VARCHAR(25) <<PK>>
+  --
+  hukou_no : VARCHAR(20) <<FK>>
+  operator_id : VARCHAR(25)
+  op_type : TINYINT
+  op_content : TEXT
+  op_time : VARCHAR(20)
+}
+
+' ===== 常住人口模块 =====
+entity "常住人口" as resident_info #e1d5e7 {
+  * resident_id : VARCHAR(25) <<PK>>
+  --
+  hukou_no : VARCHAR(20) <<FK>>
+  id_card : VARCHAR(18)
+  name : VARCHAR(50)
+  gender : TINYINT
+  birth_date : VARCHAR(20)
+  nation : VARCHAR(20)
+  education : VARCHAR(20)
+  marital_status : TINYINT
+  occupation : VARCHAR(50)
+  address : VARCHAR(200)
+  status : TINYINT
+  create_time : VARCHAR(20)
+}
+
+entity "常住人口变更" as resident_change_log #e1d5e7 {
+  * change_id : VARCHAR(25) <<PK>>
+  --
+  id_card : VARCHAR(18) <<FK>>
+  change_type : TINYINT
+  old_value : VARCHAR(500)
+  new_value : VARCHAR(500)
+  change_time : VARCHAR(20)
+  operator_id : VARCHAR(25)
+}
+
+' ===== 迁入管理模块 =====
+entity "迁入申请" as move_in_application #fff2cc {
+  * apply_no : VARCHAR(25) <<PK>>
+  --
+  applicant_name : VARCHAR(50)
+  applicant_id : VARCHAR(18)
+  origin : VARCHAR(200)
+  target_hukou : VARCHAR(20)
+  reason : VARCHAR(500)
+  status : TINYINT
+  apply_time : VARCHAR(20)
+  operator_id : VARCHAR(25) <<FK>>
+}
+
+entity "迁入审批" as move_in_approval_record #fff2cc {
+  * approval_id : VARCHAR(25) <<PK>>
+  --
+  apply_no : VARCHAR(25) <<FK>>
+  approval_level : TINYINT
+  auditor_id : VARCHAR(25) <<FK>>
+  result : TINYINT
+  comment : VARCHAR(500)
+  approval_time : VARCHAR(20)
+}
+
+entity "迁入材料" as move_in_material #fff2cc {
+  * material_id : VARCHAR(25) <<PK>>
+  --
+  apply_no : VARCHAR(25) <<FK>>
+  material_type : TINYINT
+  file_name : VARCHAR(255)
+  file_path : VARCHAR(500)
+  upload_time : VARCHAR(20)
+}
+
+' ===== 迁出管理模块 =====
+entity "迁出申请" as move_out_application #ffe6cc {
+  * apply_no : VARCHAR(25) <<PK>>
+  --
+  id_card : VARCHAR(18) <<FK>>
+  current_hukou : VARCHAR(20)
+  destination : VARCHAR(200)
+  reason : VARCHAR(500)
+  status : TINYINT
+  apply_time : VARCHAR(20)
+  operator_id : VARCHAR(25) <<FK>>
+}
+
+entity "迁出审批" as move_out_approval_record #ffe6cc {
+  * approval_id : VARCHAR(25) <<PK>>
+  --
+  apply_no : VARCHAR(25) <<FK>>
+  approval_level : TINYINT
+  auditor_id : VARCHAR(25) <<FK>>
+  result : TINYINT
+  comment : VARCHAR(500)
+  approval_time : VARCHAR(20)
+}
+
+entity "迁出档案" as move_out_archive #ffe6cc {
+  * archive_id : VARCHAR(25) <<PK>>
+  --
+  apply_no : VARCHAR(25) <<FK>>
+  archive_data : TEXT
+  archive_time : VARCHAR(20)
+}
+
+' ===== 流动人口模块 =====
+entity "流动人口" as floating_population_record #f8cecc {
+  * record_id : VARCHAR(25) <<PK>>
+  --
+  id_card : VARCHAR(18)
+  name : VARCHAR(50)
+  gender : TINYINT
+  origin : VARCHAR(200)
+  current_addr : VARCHAR(200)
+  register_time : VARCHAR(20)
+  status : TINYINT
+  operator_id : VARCHAR(25) <<FK>>
+}
+
+entity "流动人口变更" as floating_population_change_log #f8cecc {
+  * log_id : VARCHAR(25) <<PK>>
+  --
+  record_id : VARCHAR(25) <<FK>>
+  change_type : TINYINT
+  old_info : VARCHAR(500)
+  new_info : VARCHAR(500)
+  change_time : VARCHAR(20)
+}
+
+' ===== 重点人员模块 =====
+entity "重点人口" as key_person_record #f3d4e4 {
+  * archive_id : VARCHAR(25) <<PK>>
+  --
+  id_card : VARCHAR(18)
+  name : VARCHAR(50)
+  control_level : TINYINT
+  reason : VARCHAR(500)
+  record_time : VARCHAR(20)
+  operator_id : VARCHAR(25) <<FK>>
+}
+
+entity "重点人员轨迹" as key_person_track_record #f3d4e4 {
+  * track_id : VARCHAR(25) <<PK>>
+  --
+  archive_id : VARCHAR(25) <<FK>>
+  location : VARCHAR(200)
+  activity : VARCHAR(500)
+  track_time : VARCHAR(20)
+}
+
+entity "重点人员状态变更" as key_person_status_change #f3d4e4 {
+  * change_id : VARCHAR(25) <<PK>>
+  --
+  archive_id : VARCHAR(25) <<FK>>
+  old_level : TINYINT
+  new_level : TINYINT
+  change_reason : VARCHAR(500)
+  change_time : VARCHAR(20)
+  operator_id : VARCHAR(25)
+}
+
+entity "重点人员预警" as key_person_alert #f3d4e4 {
+  * alert_id : VARCHAR(25) <<PK>>
+  --
+  archive_id : VARCHAR(25) <<FK>>
+  alert_type : TINYINT
+  alert_content : VARCHAR(500)
+  is_handled : TINYINT
+  alert_time : VARCHAR(20)
+}
+
+' ===== 证件管理模块 =====
+entity "证件信息" as certificate_info #cdeb8b {
+  * cert_no : VARCHAR(25) <<PK>>
+  --
+  id_card : VARCHAR(18) <<FK>>
+  cert_type : TINYINT
+  status : TINYINT
+  issue_date : VARCHAR(20)
+  valid_until : VARCHAR(20)
+  create_time : VARCHAR(20)
+}
+
+entity "证件挂失" as certificate_loss_record #cdeb8b {
+  * loss_id : VARCHAR(25) <<PK>>
+  --
+  old_cert_no : VARCHAR(25) <<FK>>
+  loss_reason : VARCHAR(500)
+  loss_time : VARCHAR(20)
+  reissue_cert_no : VARCHAR(25)
+}
+
+entity "证件注销" as certificate_cancel_record #cdeb8b {
+  * cancel_id : VARCHAR(25) <<PK>>
+  --
+  cert_no : VARCHAR(25) <<FK>>
+  cancel_reason : VARCHAR(500)
+  cancel_time : VARCHAR(20)
+  operator_id : VARCHAR(25)
+}
+
+' ===== 定时任务模块 =====
+entity "定时任务配置" as scheduled_task_config #b1ddf0 {
+  * task_id : VARCHAR(25) <<PK>>
+  --
+  task_name : VARCHAR(50)
+  task_type : TINYINT
+  cron_expr : VARCHAR(20)
+  is_active : TINYINT
+}
+
+entity "定时任务执行" as scheduled_task_execution_log #b1ddf0 {
+  * exec_id : VARCHAR(25) <<PK>>
+  --
+  task_id : VARCHAR(25) <<FK>>
+  exec_status : TINYINT
+  exec_result : VARCHAR(500)
+  start_time : VARCHAR(20)
+  end_time : VARCHAR(20)
+}
+
+' ===== 关系 =====
+
+' --- t_user 核心关联 ---
+user ||--|| role_permission : "分配 1:1"
+user ||--o{ system_operation_log : "操作记录 1:N"
+user ||--o{ notification : "接收 1:N"
+user ||--o{ data_backup_log : "备份 1:N"
+user ||--o{ floating_population_record : "登记 1:N"
+user ||--o{ household_record : "经办 1:N"
+
+' --- 家庭户口 ---
+household_record ||--o{ household_member : "包含 1:N"
+household_record ||--o{ household_operation_log : "操作记录 1:N"
+household_record ||--o{ resident_info : "关联 1:N"
+
+' --- 常住人口 ---
+resident_info ||--o{ resident_change_log : "变更记录 1:N"
+
+' --- 迁入管理 ---
+move_in_application ||--o{ move_in_approval_record : "审批 1:N"
+move_in_application ||--o{ move_in_material : "上传材料 1:N"
+
+' --- 迁出管理 ---
+move_out_application ||--o{ move_out_approval_record : "审批 1:N"
+move_out_application ||--|| move_out_archive : "归档 1:1"
+
+' --- 流动人口 ---
+floating_population_record ||--o{ floating_population_change_log : "变更记录 1:N"
+
+' --- 重点人员 ---
+key_person_record ||--o{ key_person_track_record : "轨迹记录 1:N"
+key_person_record ||--o{ key_person_status_change : "状态变更 1:N"
+key_person_record ||--o{ key_person_alert : "预警 1:N"
+
+' --- 证件管理 ---
+certificate_info ||--o{ certificate_loss_record : "挂失 1:N"
+certificate_info ||--o{ certificate_cancel_record : "注销 1:N"
+
+' --- 定时任务 ---
+scheduled_task_config ||--o{ scheduled_task_execution_log : "执行记录 1:N"
+
+@enduml

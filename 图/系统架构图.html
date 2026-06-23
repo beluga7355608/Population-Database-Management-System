@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>人口数据库管理系统 - 系统架构图</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: "Microsoft YaHei","PingFang SC",sans-serif; background:#f0f2f5; color:#333; line-height:1.8; }
+  .container { max-width:1300px; margin:0 auto; padding:30px 20px; }
+  h1 { text-align:center; font-size:28px; color:#1a1a2e; margin-bottom:10px; padding:20px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:#fff; border-radius:12px; }
+  h2 { font-size:22px; color:#1a1a2e; margin:40px 0 15px; padding-left:14px; border-left:4px solid #667eea; }
+  h3 { font-size:17px; color:#444; margin:25px 0 10px; }
+  .diagram-box { background:#fff; border-radius:12px; padding:25px; margin:20px 0; box-shadow:0 2px 12px rgba(0,0,0,0.08); overflow-x:auto; }
+  .mermaid { display:flex; justify-content:center; }
+  .desc-box { background:#fff; border-radius:12px; padding:25px 30px; margin:20px 0; box-shadow:0 2px 12px rgba(0,0,0,0.08); }
+  .desc-box h3 { color:#667eea; margin-top:0; }
+  .desc-box ul { padding-left:20px; }
+  .desc-box li { margin:6px 0; }
+  .legend { display:flex; flex-wrap:wrap; gap:15px; margin:15px 0; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; font-size:13px; background:#f5f5f5; padding:4px 12px; border-radius:20px; }
+  .badge { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px; }
+  th { background:#667eea; color:#fff; padding:10px 12px; text-align:left; }
+  td { padding:10px 12px; border-bottom:1px solid #eee; }
+  tr:hover td { background:#f8f9ff; }
+  .tech-stack { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .tech-tag { background:#e8ecff; color:#667eea; padding:5px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+  .note { background:#fffbe6; border-left:3px solid #faad14; padding:12px 18px; margin:15px 0; border-radius:0 8px 8px 0; font-size:14px; }
+  hr { border:none; border-top:1px solid #e8e8e8; margin:30px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>人口数据库管理系统 - 系统架构图</h1>
+<p style="text-align:center;color:#888;margin-top:8px;">第10组 | 版本 V1.0 | 2026-06-15</p>
+
+<!-- ============================ -->
+<h2>一、系统分层架构总览</h2>
+<!-- ============================ -->
+
+<div class="diagram-box">
+<div class="mermaid">
+graph TB
+    subgraph CLIENT["🖥️ 客户端层 Client Layer"]
+        direction LR
+        B1["Chrome / Edge<br/>浏览器"]
+        B2["户籍工作人员"]
+        B3["系统管理员"]
+    end
+
+    subgraph SECURITY["🔒 安全网关层 Security Gateway"]
+        direction LR
+        SG1["Spring Security<br/>身份认证 & 鉴权"]
+        SG2["IP 白名单过滤<br/>防恶意请求"]
+        SG3["HTTPS 加密传输<br/>数据防篡改"]
+    end
+
+    subgraph PRESENT["🎨 前端展示层 Presentation Layer"]
+        direction LR
+        VUE["Vue.js 2.x/3.x<br/>SPA 单页应用"]
+        UI["Element UI<br/>组件库"]
+        ROUTER["Vue Router<br/>路由守卫"]
+        AXIOS["Axios<br/>HTTP 客户端"]
+    end
+
+    subgraph BUSINESS["⚙️ 业务逻辑层 Business Logic Layer (Spring Boot)"]
+        direction TB
+        
+        subgraph CONTROLLER["Controller 控制层"]
+            C1["AuthController"]
+            C2["HouseholdController"]
+            C3["PopulationController"]
+            C4["CertificateController"]
+            C5["ReportController"]
+        end
+
+        subgraph SERVICE["Service 服务层"]
+            S1["登录认证服务<br/>LoginService"]
+            S2["户口立户服务<br/>HouseholdService"]
+            S3["常住人口服务<br/>ResidentService"]
+            S4["户口迁入迁出服务<br/>TransferService"]
+            S5["流动人口服务<br/>FloatingPopService"]
+            S6["重点人口服务<br/>KeyPopService"]
+            S7["证件管理服务<br/>CertificateService"]
+            S8["操作日志服务<br/>AuditLogService"]
+            S9["数据备份服务<br/>BackupService"]
+            S10["消息提醒服务<br/>NotificationService"]
+        end
+    end
+
+    subgraph DATA_ACCESS["📦 数据访问层 Data Access Layer"]
+        direction LR
+        MB["MyBatis<br/>ORM 映射"]
+        DRUID["Druid<br/>连接池"]
+        TX["Spring TX<br/>事务管理"]
+    end
+
+    subgraph DATA["🗄️ 数据存储层 Data Storage"]
+        direction LR
+        MYSQL[("MySQL 8.0+<br/>主数据库<br/><br/>· 人口户籍数据<br/>· 业务台账<br/>· 审批记录<br/>· 审计日志")]
+        REDIS[("Redis<br/>可选<br/><br/>· Session<br/>· 缓存")]
+        FILES[("文件存储<br/><br/>· 证明材料<br/>· 附件上传<br/>· 备份文件")]
+    end
+
+    subgraph INFRA["🏗️ 基础设施层 Infrastructure"]
+        direction LR
+        TOMCAT["Tomcat 8.5+<br/>Servlet容器"]
+        JDK["JDK 21<br/>运行环境"]
+        MAVEN["Maven 3.6+<br/>构建管理"]
+        NODE["Node.js 14+<br/>前端构建"]
+    end
+
+    CLIENT -->|"HTTP/HTTPS"| SECURITY
+    SECURITY --> PRESENT
+    PRESENT -->|"RESTful API JSON"| CONTROLLER
+    CONTROLLER --> SERVICE
+    SERVICE --> DATA_ACCESS
+    DATA_ACCESS --> DATA
+    INFRA -.->|"支撑运行"| BUSINESS
+    INFRA -.->|"支撑运行"| DATA
+
+    style CLIENT fill:#e3f2fd,stroke:#1565c0
+    style SECURITY fill:#fce4ec,stroke:#c62828
+    style PRESENT fill:#e8f5e9,stroke:#2e7d32
+    style BUSINESS fill:#fff3e0,stroke:#e65100
+    style DATA_ACCESS fill:#f3e5f5,stroke:#6a1b9a
+    style DATA fill:#e0f7fa,stroke:#006064
+    style INFRA fill:#eceff1,stroke:#37474f
+</div>
+</div>
+
+<!-- ============================ -->
+<h2>二、技术栈全景</h2>
+<!-- ============================ -->
+
+<div class="desc-box">
+<div class="tech-stack">
+  <span class="tech-tag">Vue.js 2.x/3.x</span>
+  <span class="tech-tag">Element UI</span>
+  <span class="tech-tag">Vue Router</span>
+  <span class="tech-tag">Axios</span>
+  <span class="tech-tag">Spring Boot 2.7+</span>
+  <span class="tech-tag">Spring Security</span>
+  <span class="tech-tag">MyBatis</span>
+  <span class="tech-tag">MySQL 8.0+</span>
+  <span class="tech-tag">Redis</span>
+  <span class="tech-tag">Tomcat 8.5+</span>
+  <span class="tech-tag">JDK 21</span>
+  <span class="tech-tag">Maven 3.6+</span>
+  <span class="tech-tag">Node.js 14+</span>
+  <span class="tech-tag">Druid</span>
+  <span class="tech-tag">HTTPS/TLS</span>
+</div>
+</div>
+
+<!-- ============================ -->
+<h2>三、模块功能架构</h2>
+<!-- ============================ -->
+
+<div class="diagram-box">
+<div class="mermaid">
+graph LR
+    A["人口数据库管理系统"] --> B["核心业务模块"]
+    A --> C["系统支撑模块"]
+    A --> D["安全与审计模块"]
+
+    B --> B1["🔑 登录模块<br/>账号认证·权限分发<br/>会话管理·密码修改"]
+    B --> B2["🏠 户口立户模块<br/>新户申请·材料核验<br/>多级审批·户口生成"]
+    B --> B3["👥 常住人口管理<br/>信息录入·变更维护<br/>多维查询·统计分析"]
+    B --> B4["📥 户口迁入模块<br/>迁入申请·材料审核<br/>审批流转·信息同步"]
+    B --> B5["📤 户口迁出模块<br/>迁出登记·状态变更<br/>台账管理·异常拦截"]
+    B --> B6["🚶 流动人口管理<br/>暂住登记·到期提醒<br/>动态查询·注销管理"]
+    B --> B7["⭐ 重点人口管理<br/>专项建档·动态跟踪<br/>权限管控·预警提醒"]
+    B --> B8["📋 证件管理模块<br/>证件办理·挂失补办<br/>状态管理·到期提醒"]
+
+    C --> C1["📝 操作日志"]
+    C --> C2["💾 数据备份"]
+    C --> C3["🔔 消息提醒"]
+    C --> C4["📊 数据导出打印"]
+
+    D --> D1["Spring Security<br/>角色权限控制"]
+    D --> D2["HTTPS加密传输<br/>敏感数据脱敏"]
+    D --> D3["操作审计日志<br/>IP白名单"]
+
+    style A fill:#667eea,color:#fff,stroke:#4a4eb5
+    style B fill:#e8f5e9,stroke:#2e7d32
+    style C fill:#fff3e0,stroke:#e65100
+    style D fill:#fce4ec,stroke:#c62828
+</div>
+</div>
+
+<!-- ============================ -->
+<h2>四、部署与网络拓扑</h2>
+<!-- ============================ -->
+
+<div class="diagram-box">
+<div class="mermaid">
+graph TB
+    subgraph LAN["🏢 公安内网 / 局域网 100Mbps+"]
+        
+        subgraph CLIENTS["客户端终端"]
+            PC1["🖥️ 户籍窗口 PC-1"]
+            PC2["🖥️ 户籍窗口 PC-2"]
+            PC3["🖥️ 管理终端"]
+            PRINTER["🖨️ 激光打印机"]
+        end
+
+        subgraph WEB_SERVER["Web 服务器"]
+            TOMCAT["Tomcat 8.5+<br/>┌─────────────────┐<br/>│ Spring Boot App │<br/>│ port: 8080/8443 │<br/>└─────────────────┘"]
+        end
+
+        subgraph DB_SERVER["数据库服务器"]
+            MYSQL_MAIN[("MySQL 8.0+<br/>主库<br/>· 人口数据<br/>· 业务台账<br/>· 审计日志")]
+            BACKUP_DIR[("📁 备份目录<br/>全量+增量<br/>自动+手动")]
+        end
+
+        subgraph CACHE["缓存服务 (可选)"]
+            REDIS_NODE[("Redis<br/>Session<br/>热点缓存")]
+        end
+
+    end
+
+    subgraph EXTERNAL["🌐 外部系统 (待对接)"]
+        NAT_SYS["全国人口信息<br/>管理系统"]
+    end
+
+    CLIENTS -->|"HTTP/HTTPS<br/>RESTful API"| TOMCAT
+    TOMCAT -->|"JDBC<br/>读写操作"| MYSQL_MAIN
+    TOMCAT -.->|"Session<br/>Cache"| REDIS_NODE
+    MYSQL_MAIN -->|"定时备份"| BACKUP_DIR
+    TOMCAT -.->|"数据同步<br/>接口对接(计划)"| NAT_SYS
+    TOMCAT -->|"打印指令"| PRINTER
+
+    style LAN fill:#f5f5f5,stroke:#999
+    style CLIENTS fill:#e3f2fd,stroke:#1565c0
+    style WEB_SERVER fill:#e8f5e9,stroke:#2e7d32
+    style DB_SERVER fill:#e0f7fa,stroke:#006064
+    style CACHE fill:#fff3e0,stroke:#e65100
+    style EXTERNAL fill:#fce4ec,stroke:#c62828
+</div>
+</div>
+
+<!-- ============================ -->
+<h2>五、数据流转示意</h2>
+<!-- ============================ -->
+
+<div class="diagram-box">
+<div class="mermaid">
+sequenceDiagram
+    actor User as 👤 户籍工作人员
+    participant Browser as 🌐 浏览器<br/>Vue.js SPA
+    participant Gateway as 🔒 Spring Security<br/>安全网关
+    participant Controller as 🎯 Controller<br/>控制层
+    participant Service as ⚙️ Service<br/>业务逻辑层
+    participant Mapper as 📦 MyBatis<br/>数据访问层
+    participant DB as 🗄️ MySQL<br/>数据库
+    participant Audit as 📝 审计日志
+
+    User->>Browser: 1. 访问系统 URL
+    Browser->>Gateway: 2. POST /api/login (账号+密码)
+    Gateway->>DB: 3. 校验账号密码
+    DB-->>Gateway: 4. 返回用户信息+角色
+    Gateway->>Audit: 5. 记录登录日志
+    Gateway-->>Browser: 6. 返回 Token + 菜单权限
+    Browser->>Browser: 7. 渲染功能菜单 (按角色)
+
+    User->>Browser: 8. 点击"新增常住人口"
+    Browser->>Gateway: 9. POST /api/resident (Token + 表单数据)
+    Gateway->>Gateway: 10. Token校验 + 权限验证
+    Gateway->>Controller: 11. 转发请求
+    Controller->>Service: 12. 业务校验 (身份证唯一性)
+    Service->>Mapper: 13. 调用 MyBatis 插入
+    Mapper->>DB: 14. INSERT INTO resident...
+    DB-->>Mapper: 15. 插入成功
+    Mapper-->>Service: 16. 返回结果
+    Service->>Audit: 17. 记录操作日志
+    Service-->>Controller: 18. 返回成功
+    Controller-->>Browser: 19. JSON 响应 {code:200}
+    Browser->>Browser: 20. 刷新列表 + 成功提示
+</div>
+</div>
+
+<!-- ============================ -->
+<h2>六、架构文字说明</h2>
+<!-- ============================ -->
+
+<div class="desc-box">
+<h3>6.1 系统概述</h3>
+<p>人口数据库管理系统采用 <strong>B/S 架构</strong>（Browser/Server），基于前后端分离模式设计。前端使用 <strong>Vue.js + Element UI</strong> 构建单页应用（SPA），后端基于 <strong>Spring Boot + MyBatis</strong> 提供 RESTful API 服务，数据持久化采用 <strong>MySQL 8.0+</strong> 关系型数据库。系统面向<strong>系统管理员</strong>和<strong>户籍工作人员</strong>两类角色，覆盖常住人口、流动人口、重点人口、户口立户、迁入迁出、证件管理等九大核心业务模块。</p>
+</div>
+
+<hr>
+
+<div class="desc-box">
+<h3>6.2 各层组件说明</h3>
+
+<h3>🖥️ 客户端层 (Client Layer)</h3>
+<ul>
+  <li><strong>运行载体</strong>：Chrome / Edge / Firefox 等主流浏览器</li>
+  <li><strong>职责</strong>：提供用户交互界面，支持户籍业务办理、数据查询、报表导出打印</li>
+  <li><strong>外设支持</strong>：激光打印机（台账打印）、扫描仪（材料上传）</li>
+</ul>
+
+<h3>🔒 安全网关层 (Security Gateway)</h3>
+<ul>
+  <li><strong>Spring Security</strong>：实现基于角色的访问控制（RBAC），区分管理员与普通工作人员权限</li>
+  <li><strong>IP 白名单</strong>：仅允许局域网内授权 IP 访问系统接口，拒绝外部非法请求</li>
+  <li><strong>HTTPS/TLS 加密</strong>：前后端通信全程加密，防止户籍数据在网络链路中被窃取或篡改</li>
+  <li><strong>会话管理</strong>：30分钟无操作自动超时退出，防止账号被他人冒用</li>
+  <li><strong>文件安全校验</strong>：上传材料时进行病毒扫描和文件类型校验</li>
+</ul>
+
+<h3>🎨 前端展示层 (Presentation Layer)</h3>
+<ul>
+  <li><strong>Vue.js 2.x/3.x</strong>：构建响应式单页应用，组件化开发，支持模块独立加载</li>
+  <li><strong>Element UI</strong>：提供表格、表单、弹窗、导航等标准化 UI 组件，保证界面风格统一</li>
+  <li><strong>Vue Router</strong>：前端路由管理 + 路由守卫，根据角色动态加载功能菜单，拦截越权访问</li>
+  <li><strong>Axios</strong>：HTTP 客户端，封装请求/响应拦截器，统一处理 Token 携带、错误提示</li>
+  <li><strong>表单校验</strong>：前端实现身份证号、手机号、日期等字段格式校验，拦截无效提交</li>
+</ul>
+
+<h3>⚙️ 业务逻辑层 (Business Logic Layer)</h3>
+<ul>
+  <li><strong>Controller 控制层</strong>：接收前端请求，参数校验，调用 Service 层处理业务</li>
+  <li><strong>Service 服务层（10个核心服务）</strong>：
+    <table>
+      <tr><th>服务名称</th><th>对应模块</th><th>核心功能</th></tr>
+      <tr><td>LoginService</td><td>登录认证</td><td>账号校验、Token签发、角色权限加载、会话管理</td></tr>
+      <tr><td>HouseholdService</td><td>户口立户</td><td>立户申请、材料核验、多级审批、户口档案生成</td></tr>
+      <tr><td>ResidentService</td><td>常住人口</td><td>信息录入、变更维护、多维查询、统计报表</td></tr>
+      <tr><td>TransferService</td><td>户口迁入/迁出</td><td>迁入迁出申请、审批流转、户籍状态同步</td></tr>
+      <tr><td>FloatingPopService</td><td>流动人口</td><td>暂住登记、到期提醒、注销管理</td></tr>
+      <tr><td>KeyPopService</td><td>重点人口</td><td>专项建档、动态跟踪、权限管控、预警提醒</td></tr>
+      <tr><td>CertificateService</td><td>证件管理</td><td>证件办理、挂失补办、状态管理</td></tr>
+      <tr><td>AuditLogService</td><td>操作日志</td><td>全维度操作记录、不可篡改、多条件查询</td></tr>
+      <tr><td>BackupService</td><td>数据备份</td><td>自动+手动备份、全量+增量、快速恢复</td></tr>
+      <tr><td>NotificationService</td><td>消息提醒</td><td>待办推送、到期提醒、站内弹窗</td></tr>
+    </table>
+  </li>
+</ul>
+
+<h3>📦 数据访问层 (Data Access Layer)</h3>
+<ul>
+  <li><strong>MyBatis</strong>：ORM 映射框架，通过 XML/SQL 注解实现 Java 对象与数据库表的映射</li>
+  <li><strong>Druid 连接池</strong>：管理数据库连接，提供 SQL 监控和慢查询分析</li>
+  <li><strong>Spring 事务管理</strong>：保证户口迁入迁出、审批等关键业务的原子性，防止数据不一致</li>
+</ul>
+
+<h3>🗄️ 数据存储层 (Data Storage Layer)</h3>
+<ul>
+  <li><strong>MySQL 8.0+ 主数据库</strong>：
+    <ul>
+      <li>存储全部人口户籍数据、业务台账、审批记录、操作日志</li>
+      <li>支持事务（InnoDB）、索引优化、主键外键约束，保障数据完整性</li>
+      <li>敏感字段（身份证号、联系方式）脱敏存储</li>
+      <li>数据永久留存，不提供物理删除，仅做状态标记</li>
+    </ul>
+  </li>
+  <li><strong>Redis（可选）</strong>：用于分布式 Session 管理和热点数据缓存，提升系统响应速度</li>
+  <li><strong>文件存储</strong>：保存户口迁入/迁出证明材料、证件附件、数据库备份文件</li>
+  <li><strong>备份策略</strong>：定期全量备份 + 增量备份，备份文件加密独立存放，支持快速恢复</li>
+</ul>
+
+<h3>🏗️ 基础设施层 (Infrastructure Layer)</h3>
+<ul>
+  <li><strong>Tomcat 8.5+</strong>：Servlet 容器，部署 Spring Boot 打包的 WAR/JAR 应用</li>
+  <li><strong>JDK 21</strong>：Java 运行时环境</li>
+  <li><strong>Maven 3.6+</strong>：项目构建与依赖管理</li>
+  <li><strong>Node.js 14+</strong>：前端项目构建打包（npm/webpack）</li>
+  <li><strong>硬件要求</strong>：CPU i5+ / 内存 16G / 硬盘 80G / 100Mbps 局域网</li>
+  <li><strong>UPS 不间断电源</strong>：防止异常断电导致数据丢失</li>
+</ul>
+</div>
+
+<hr>
+
+<div class="desc-box">
+<h3>6.3 网络与安全设计</h3>
+<table>
+  <tr><th>安全层面</th><th>措施</th><th>说明</th></tr>
+  <tr><td>数据存储安全</td><td>敏感字段脱敏 + 权限控制</td><td>身份证号、联系方式脱敏存储；仅授权运维账号可直连数据库</td></tr>
+  <tr><td>访问控制安全</td><td>Spring Security + RBAC</td><td>区分管理员/工作人员角色，重点人口模块设置专属高权限</td></tr>
+  <tr><td>网络传输安全</td><td>HTTPS 加密 + IP 白名单</td><td>前后端通信加密；拒绝非法外部 IP 访问，拦截恶意请求</td></tr>
+  <tr><td>应用审计</td><td>全维度操作日志</td><td>记录操作人、时间、IP、模块、内容，日志不可删除篡改</td></tr>
+  <tr><td>会话安全</td><td>30分钟超时 + 错误锁定</td><td>自动退出 + 多次密码错误锁定账号，防暴力破解</td></tr>
+  <tr><td>业务约束</td><td>状态机 + 流程引擎</td><td>杜绝跳过环节、越级操作、逆向办理；重复业务自动拦截</td></tr>
+  <tr><td>数据安全</td><td>水印 + 防泄密</td><td>导出/打印涉密文档时自动添加操作人+时间水印</td></tr>
+</table>
+</div>
+
+<hr>
+
+<div class="desc-box">
+<h3>6.4 核心模块与数据表关联</h3>
+<div class="mermaid">
+erDiagram
+    USER ||--o{ OPERATION_LOG : "操作产生"
+    USER ||--o{ HOUSEHOLD : "经办"
+    USER ||--o{ RESIDENT : "录入/维护"
+    USER ||--o{ CERTIFICATE : "办理"
+    
+    HOUSEHOLD ||--|{ RESIDENT : "包含成员"
+    RESIDENT ||--o| HOUSEHOLD : "归属户口"
+    RESIDENT ||--o{ TRANSFER_RECORD : "迁入/迁出记录"
+    RESIDENT ||--o{ FLOATING_POP : "暂住登记"
+    RESIDENT ||--o{ KEY_POP_RECORD : "重点标记"
+    RESIDENT ||--o{ CERTIFICATE : "持有证件"
+
+    USER {
+        int user_id PK
+        string account UK
+        string password
+        string role
+        string real_name
+        datetime last_login
+        int status
+    }
+    HOUSEHOLD {
+        string household_id PK
+        string household_num UK
+        string head_name
+        string address
+        string status
+        datetime create_time
+    }
+    RESIDENT {
+        string resident_id PK
+        string id_card UK
+        string name
+        string gender
+        string household_id FK
+        string status
+        string address
+    }
+    TRANSFER_RECORD {
+        string record_id PK
+        string resident_id FK
+        string transfer_type
+        string reason
+        string status
+        datetime apply_time
+    }
+    CERTIFICATE {
+        string cert_id PK
+        string resident_id FK
+        string cert_type
+        string cert_num UK
+        string status
+        datetime issue_date
+    }
+</div>
+<p style="text-align:center;color:#888;font-size:13px;margin-top:10px;">图：核心实体关系示意（简版）</p>
+</div>
+
+<div class="note">
+<strong>📌 说明</strong>：以上 ER 图为简化示意，实际数据库包含 20+ 张表，涵盖常住人口表、流动人口表、重点人口档案表、户口信息表、证件台账表、审批记录表、操作日志表、备份记录表、消息提醒表、系统配置表等。完整数据库设计详见《数据库说明书》。
+</div>
+
+</div>
+</body>
+</html>

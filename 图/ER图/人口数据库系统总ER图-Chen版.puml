@@ -1,0 +1,156 @@
+﻿@startuml
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 9
+
+skinparam rectangle {
+  BackgroundColor #FEFECE
+  BorderColor #333333
+  FontSize 9
+  FontStyle bold
+}
+
+skinparam node {
+  BackgroundColor #E3F2FD
+  BorderColor #1565C0
+  FontSize 7
+  FontStyle italic
+}
+
+title <b>Population Database System - System ERD (Chen Notation)</b>
+
+left to right direction
+
+rectangle "user_account\n(User Account)" as user_account
+rectangle "role_permission\n(Role Permission)" as role_permission
+rectangle "system_operation_log\n(System Op Log)" as system_operation_log
+rectangle "system_notification\n(System Notification)" as system_notification
+rectangle "system_data_backup\n(System Data Backup)" as system_data_backup
+
+rectangle "household_record\n(Household)" as household_record
+rectangle "household_member\n(Household Member)" as household_member
+rectangle "household_operation_log\n(Household Op Log)" as household_operation_log
+
+rectangle "resident_info\n(Resident)" as resident_info
+rectangle "resident_change_record\n(Resident Change)" as resident_change_record
+
+rectangle "move_in_application\n(Move-In App)" as move_in_application
+rectangle "move_in_approval_record\n(Move-In Approval)" as move_in_approval_record
+rectangle "move_in_material\n(Move-In Material)" as move_in_material
+
+rectangle "move_out_application\n(Move-Out App)" as move_out_application
+rectangle "move_out_approval_record\n(Move-Out Approval)" as move_out_approval_record
+rectangle "move_out_archive\n(Move-Out Archive)" as move_out_archive
+
+rectangle "floating_population_record\n(Floating Pop)" as floating_population_record
+rectangle "floating_population_change\n(Float Pop Change)" as floating_population_change
+
+rectangle "key_person_archive\n(Key Person)" as key_person_archive
+rectangle "key_person_track\n(Key Person Track)" as key_person_track
+rectangle "key_person_status_change\n(Key Person Status)" as key_person_status_change
+rectangle "key_person_alert\n(Key Person Alert)" as key_person_alert
+
+rectangle "certificate_record\n(Certificate)" as certificate_record
+rectangle "certificate_loss_record\n(Cert Loss)" as certificate_loss_record
+rectangle "certificate_cancel_record\n(Cert Cancel)" as certificate_cancel_record
+
+rectangle "scheduled_task_config\n(Task Config)" as scheduled_task_config
+rectangle "scheduled_task_execution_log\n(Task Exec Log)" as scheduled_task_execution_log
+
+node "owns\n1:1" <<diamond>> as r_own
+node "performs\n1:N" <<diamond>> as r_operate_sys
+node "receives\n1:N" <<diamond>> as r_receive
+node "backs_up\n1:N" <<diamond>> as r_backup
+node "handles\n1:N" <<diamond>> as r_operate_h
+node "registers\n1:N" <<diamond>> as r_register
+node "contains\n1:N" <<diamond>> as r_contain
+node "logs\n1:N" <<diamond>> as r_oplog_h
+node "links\n1:N" <<diamond>> as r_relate
+node "changes\n1:N" <<diamond>> as r_change_r
+node "approves\n1:N" <<diamond>> as r_approve_in
+node "uploads\n1:N" <<diamond>> as r_upload
+node "approves\n1:N" <<diamond>> as r_approve_out
+node "archives\n1:1" <<diamond>> as r_archive
+node "logs_ch\n1:N" <<diamond>> as r_change_f
+node "tracks\n1:N" <<diamond>> as r_track
+node "changes\n1:N" <<diamond>> as r_status
+node "alerts\n1:N" <<diamond>> as r_alert
+node "reports\n1:N" <<diamond>> as r_loss
+node "cancels\n1:N" <<diamond>> as r_cancel
+node "executes\n1:N" <<diamond>> as r_exec
+
+' -- user_account hub --
+user_account -- r_own
+r_own -- role_permission
+
+user_account -- r_operate_sys
+r_operate_sys -- system_operation_log
+
+user_account -- r_receive
+r_receive -- system_notification
+
+user_account -- r_backup
+r_backup -- system_data_backup
+
+user_account -- r_operate_h
+r_operate_h -- household_record
+
+user_account -- r_register
+r_register -- floating_population_record
+
+' -- household cluster --
+household_record -- r_contain
+r_contain -- household_member
+
+household_record -- r_oplog_h
+r_oplog_h -- household_operation_log
+
+household_record -- r_relate
+r_relate -- resident_info
+
+' -- resident cluster --
+resident_info -- r_change_r
+r_change_r -- resident_change_record
+
+' -- move_in cluster --
+move_in_application -- r_approve_in
+r_approve_in -- move_in_approval_record
+
+move_in_application -- r_upload
+r_upload -- move_in_material
+
+' -- move_out cluster --
+move_out_application -- r_approve_out
+r_approve_out -- move_out_approval_record
+
+move_out_application -- r_archive
+r_archive -- move_out_archive
+
+' -- floating pop cluster --
+floating_population_record -- r_change_f
+r_change_f -- floating_population_change
+
+' -- key person cluster --
+key_person_archive -- r_track
+r_track -- key_person_track
+
+key_person_archive -- r_status
+r_status -- key_person_status_change
+
+key_person_archive -- r_alert
+r_alert -- key_person_alert
+
+' -- certificate cluster --
+certificate_record -- r_loss
+r_loss -- certificate_loss_record
+
+certificate_record -- r_cancel
+r_cancel -- certificate_cancel_record
+
+' -- scheduler cluster --
+scheduled_task_config -- r_exec
+r_exec -- scheduled_task_execution_log
+
+@enduml

@@ -1,0 +1,159 @@
+<mxfile host="Electron">
+  <diagram name="登录 &amp; Session &amp; 权限加载" id="7qqbGYCspsFbvG5jUVvu">
+    <mxGraphModel dx="1201" dy="730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="用户" vertex="1">
+          <mxGeometry height="1213" width="150" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="前端" vertex="1">
+          <mxGeometry height="1213" width="150" x="220" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="AuthController" vertex="1">
+          <mxGeometry height="1213" width="150" x="486" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="AuthService" vertex="1">
+          <mxGeometry height="1213" width="150" x="702" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-5" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="用户库" vertex="1">
+          <mxGeometry height="1213" width="150" x="959" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-6" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="权限校验模块" vertex="1">
+          <mxGeometry height="1213" width="150" x="1266" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-7" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="Redis(Session:t_session)" vertex="1">
+          <mxGeometry height="1213" width="203" x="1466" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-8" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="日志模块" vertex="1">
+          <mxGeometry height="1213" width="150" x="1899" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-9" parent="1" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30;fillColor=light-dark(#eeeeee,#1f2020);fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="alt" vertex="1">
+          <mxGeometry height="521" width="1701" x="284" y="617" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-10" parent="gDUnseVFoWwXU8DTXXXu-9" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" value="[无权限]" vertex="1">
+          <mxGeometry height="20" width="1671" x="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-11" parent="gDUnseVFoWwXU8DTXXXu-9" style="shape=line;dashed=1;whiteSpace=wrap;verticalAlign=top;labelPosition=center;verticalLabelPosition=middle;align=center;strokeColor=#B3B3B3;" value="[有权限]" vertex="1">
+          <mxGeometry height="4" width="1701" y="213" as="geometry" />
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-12" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-1" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-2" value="输入账号密码">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="204" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-13" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-2" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-3" value="login(acUserID, acPasswd)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="437" y="183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-14" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-3" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-4" value="checkLoginInput()">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="678" y="239" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-15" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="curved=1;endArrow=block;rounded=0;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-4" value="校验字符合法性">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="828" y="291" />
+              <mxPoint x="828" y="321" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-16" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-5" value="查询用户信息">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="914" y="373" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-17" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-5" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-4" value="返回用户(iRole, acUserID)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="917" y="429" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-18" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-6" value="权限检查(t_perm_check_result)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1068" y="485" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-19" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-6" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-5" value="查询(acUserID + iRole + module)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1199" y="541" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-20" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-5" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-6" value="iHasAccess / deny_reason">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1196" y="597" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-21" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-6" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-4" value="deny">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1071" y="701" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-22" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-3" value="登录失败">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="681" y="753" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-23" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-3" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-2" value="拒绝访问">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="805" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-24" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-7" value="写入stSESSION">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1181" y="909" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-25" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-8" value="写登录日志">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1384" y="1010" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-26" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-4" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-3" value="返回token + session">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="681" y="1066" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-27" edge="1" parent="1" source="gDUnseVFoWwXU8DTXXXu-3" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;strokeWidth=4;" target="gDUnseVFoWwXU8DTXXXu-2" value="登录成功 + 菜单权限">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1118" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gDUnseVFoWwXU8DTXXXu-28" parent="1" style="fillColor=#ffff88;strokeColor=#9E916F;fontColor=light-dark(#333333,#cccccc);strokeWidth=4;" value="acToken, psz_permission(JSON), expire_time" vertex="1">
+          <mxGeometry height="49" width="356" x="1593" y="929" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

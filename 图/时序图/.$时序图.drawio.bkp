@@ -1,0 +1,367 @@
+<mxfile host="Electron">
+  <diagram name="第 1 页" id="EhxgHnoInkTpauxDkOVu">
+    <mxGraphModel dx="1201" dy="730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-31" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="用户/工作人员" vertex="1">
+          <mxGeometry height="2656" width="150" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-32" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="前端系统" vertex="1">
+          <mxGeometry height="2656" width="150" x="256" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-33" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Controller层" vertex="1">
+          <mxGeometry height="2656" width="150" x="456" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-34" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Service业务层" vertex="1">
+          <mxGeometry height="2656" width="150" x="686" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-35" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="数据库" vertex="1">
+          <mxGeometry height="2656" width="150" x="923" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-36" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="权限系统" vertex="1">
+          <mxGeometry height="2656" width="150" x="1123" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-37" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="日志系统" vertex="1">
+          <mxGeometry height="2656" width="150" x="1323" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-38" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="输入账号密码登录">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-39" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="发起登录请求">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="179" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-40" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="用户身份校验">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-41" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="查询用户信息">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="283" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-42" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-35" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="返回用户数据">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="891" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-43" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-36" value="校验角色与权限">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="988" y="387" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-44" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-36" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="返回权限菜单">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="991" y="439" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-45" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录登录日志">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="491" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-46" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="登录成功+Token+权限">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="658" y="543" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-47" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="返回系统入口">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="443" y="595" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-48" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="发起家庭户口立户申请">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="647" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-49" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="提交立户信息">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="699" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-50" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="立户处理">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="751" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-51" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="身份证唯一性校验">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="803" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-52" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="保存立户申请">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="855" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-53" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录立户操作">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="907" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-54" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="返回待审核状态">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="658" y="959" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-55" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="提交成功">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="443" y="1011" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-56" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="审核立户申请">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="1063" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-57" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="提交审核结果">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-58" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="审核处理">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="1167" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-59" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="更新户口档案/编号生成">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1219" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-60" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录审核日志">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="1271" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-61" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="提交迁入申请">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="1323" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-62" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="迁入登记">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-63" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="迁入处理">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="1427" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-64" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="保存迁入信息">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1479" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-65" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="材料核验与审批流">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1531" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-66" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="多级审批流转">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1583" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-67" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="同步常住人口库">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-68" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录迁入操作">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="1687" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-69" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="提交迁出申请">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="1739" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-70" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="迁出登记">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1791" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-71" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="迁出处理">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="1843" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-72" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="校验在册状态">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1895" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-73" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="更新迁出状态">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1947" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-74" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="更新台账记录">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="1999" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-75" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录迁出日志">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="2051" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-76" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-31" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="建立重点人口档案/跟踪">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="222" y="2103" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-77" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="提交重点人员信息">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="2155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-78" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-36" value="权限校验">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="873" y="2207" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-79" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-36" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-33" value="允许访问">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="876" y="2259" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-80" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-33" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-34" value="建档/跟踪处理">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="2311" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-81" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="保存风险等级与档案">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="2363" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-82" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-35" value="写入动态跟踪记录">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="888" y="2415" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-83" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-37" value="记录重点人员操作">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1088" y="2467" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-84" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-34" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-32" value="返回业务结果">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="558" y="2519" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ANGYIQPTJ_pimDcwycW2-85" edge="1" parent="1" source="ANGYIQPTJ_pimDcwycW2-32" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;endArrow=block;" target="ANGYIQPTJ_pimDcwycW2-31" value="展示结果/状态更新">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="2571" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
